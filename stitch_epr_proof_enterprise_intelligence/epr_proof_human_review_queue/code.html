@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed":"#d9e2ff","surface-container-lowest":"#ffffff","on-primary":"#ffffff","primary":"#004ac6","on-error-container":"#93000a","error":"#ba1a1a","error-container":"#ffdad6","on-secondary-fixed":"#081a3c","on-tertiary-container":"#f6edff","primary-fixed-dim":"#b4c5ff","on-background":"#0b1c30","on-error":"#ffffff","outline-variant":"#c3c6d7","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#5516be","on-tertiary-fixed":"#23005c","tertiary-fixed":"#e9ddff","primary-container":"#2563eb","tertiary-fixed-dim":"#d0bcff","tertiary":"#632ecd","on-secondary-container":"#4c5b80","inverse-surface":"#213145","tertiary-container":"#7d4ce7","surface-bright":"#f8f9ff","on-primary-fixed-variant":"#003ea8","on-surface-variant":"#434655","inverse-on-surface":"#eaf1ff","surface-container-low":"#eff4ff","on-secondary-fixed-variant":"#37466a","secondary-fixed-dim":"#b6c6f1","surface":"#f8f9ff","inverse-primary":"#b4c5ff","on-primary-fixed":"#00174b","on-surface":"#0b1c30","surface-tint":"#0053db","surface-variant":"#d3e4fe","secondary-container":"#c4d4ff","outline":"#737686","surface-container-highest":"#d3e4fe","background":"#f8f9ff","on-primary-container":"#eeefff","secondary":"#4f5e83","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","primary-fixed":"#dbe1ff","on-tertiary":"#ffffff","surface-container":"#e5eeff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter":"1.5rem","space-md":"1rem","space-xl":"2rem","space-xs":"0.25rem","space-sm":"0.5rem","margin":"2rem","gutter-mobile":"1rem","margin-mobile":"1rem","space-lg":"1.5rem"},"fontFamily":{"headline-xl":["Inter"],"label-md":["Inter"],"display-lg":["Inter"],"body-lg":["Inter"],"label-caps":["Inter"],"headline-lg":["Inter"],"caption":["Inter"],"display-lg-mobile":["Inter"],"body-sm":["Inter"],"body-md":["Inter"],"code-sm":["JetBrains Mono"],"headline-md":["Inter"]},"fontSize":{"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"display-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.025em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"600"}],"headline-lg":["22px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"caption":["12px",{"lineHeight":"16px","fontWeight":"400"}],"display-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-md":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-inverse-surface z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-inverse-surface"><img alt="Brand logo. - Primary color: #4f8cff
+- Font: inter
+- Mode: dark
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WHMuXBk_-dt3sQaB2pQg_2mc8fZg2-nWzy3sJaYTe_dBilYx-aDUMBnALl9TEdUlOrEciBR_VnAd_r0PINK7EBIZTq5YrCo44bTT6WwNu6X8N-LXazPo6Q6faVFCpvEvr96irK3d9uvReg-c2ZY4-iFCriTiAlkmUGkkUM30XQOcf69_a5gLSYsETYaC7BdkZb-CWSevrYg_9N09ShEMRxLwyEKOnYckDnDqRDPGRSALhTN1r-0qlC5bU"/><div class="flex flex-col min-w-0 flex-1"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md font-bold text-inverse-on-surface truncate">EPR Proof</span><span class="material-symbols-outlined text-primary-fixed-dim text-[16px]">verified</span></div><span class="font-caption text-caption text-secondary-fixed-dim tracking-wide truncate">Evidence Intelligence</span></div></div><nav class="flex flex-col gap-space-xs px-space-sm mt-space-md" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-label-md text-label-md">Dashboard</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="verify-claim" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">fact_check</span><span class="font-label-md text-label-md">Verify Claim</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="cases" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span class="font-label-md text-label-md">Cases</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="review-queue" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">rule</span><span class="font-label-md text-label-md">Review Queue</span></div><span class="px-1.5 py-0.5 rounded-full font-label-caps text-label-caps bg-tertiary-container text-on-tertiary-container">24</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="evidence-library" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-label-md text-label-md">Evidence Library</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="analytics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-label-md text-label-md">Analytics</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-md text-label-md">Settings</span></div></a></nav></div><div class="p-space-sm m-space-sm rounded-xl bg-on-background flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Wm0hBg52YYTzx-BYr9egznFX1gcWCJkUkxyW-7rE7UCGX5IrU1yOL2YJ7n8NYRKsRL1e32JvWtYOOrdMxWApo47ORPsMdMuyfQedUz9iRz3YAb_VZ72oiDDEQ83nmaAn_w-4pZMA-nX4Dcy20wqUbbCG6K6OGX03yuKoPssSdB7v2AntECRZopUNoyYz7If-wQb_fxi_9SLw3T6-gaXVC9gRzGEFHeT73vhpkcp5hMHijein7kzfdDaRKt"/><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-inverse-on-surface font-semibold truncate">Elena Vance</span><span class="font-caption text-caption text-secondary-fixed-dim truncate">Chief Risk Officer • Demo</span></div></div><div class="flex items-center gap-space-xs pt-space-xs"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-caps text-label-caps text-secondary-fixed-dim">Online • Operational</span></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex flex-col"><div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption"><span>EPR Intel</span><span>/</span><span class="text-primary font-medium">Dashboard</span></div><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Executive Mission Control</span><span class="font-label-caps text-label-caps px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant font-medium">Live Telemetry</span></div></div></div><div class="flex items-center gap-space-sm"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span><input class="h-10 pl-9 pr-4 w-72 lg:w-96 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Search telemetry, claims, or proof hashes... ⌘K" type="text"/></div><button class="h-10 px-space-sm rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container flex items-center gap-space-xs font-label-md text-label-md transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">tune</span><span class="hidden xl:inline">Filter</span></button><button class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">help_outline</span></button><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Wm0hBg52YYTzx-BYr9egznFX1gcWCJkUkxyW-7rE7UCGX5IrU1yOL2YJ7n8NYRKsRL1e32JvWtYOOrdMxWApo47ORPsMdMuyfQedUz9iRz3YAb_VZ72oiDDEQ83nmaAn_w-4pZMA-nX4Dcy20wqUbbCG6K6OGX03yuKoPssSdB7v2AntECRZopUNoyYz7If-wQb_fxi_9SLw3T6-gaXVC9gRzGEFHeT73vhpkcp5hMHijein7kzfdDaRKt"/></div></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<!-- Operational SLA & Breadcrumb Top Bar -->
+<section class="w-full px-gutter pt-space-md pb-space-lg">
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md pb-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption">
+<span>EPR Intel</span>
+<span class="text-outline">/</span>
+<span>Verification</span>
+<span class="text-outline">/</span>
+<span class="text-primary font-medium">Review Queue</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">Human Review Queue</h1>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-caps text-label-caps shadow-sm">
+<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
+            24 Cases Awaiting Auditor Adjudication
+          </div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-caps text-label-caps">Tier-3 Forensic Desk</span>
+</div>
+</div>
+<!-- Action Controls -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="h-10 px-3.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container flex items-center gap-space-xs font-label-md text-label-md shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Triage Policy Settings</span>
+</button>
+<button class="h-10 px-3.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container flex items-center gap-space-xs font-label-md text-label-md shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">assignment_ind</span>
+<span>Auto-Assign Queue</span>
+</button>
+<button class="h-10 px-4 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary flex items-center gap-space-xs shadow-md shadow-primary/20 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Batch Freeze Selected</span>
+</button>
+</div>
+</div>
+<!-- SLA Alert Ribbon -->
+<div class="w-full rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Avg SLA Dwell: 3.4 hrs</span>
+<span class="font-caption text-caption text-secondary font-medium">• Target: &lt; 4.0 hrs</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Regulatory enforcement threshold: 92% cases adjudicated within statutory deadline</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg">
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-label-caps text-secondary font-semibold">92% IN COMPLIANCE</span>
+<span class="font-body-sm text-body-sm font-bold text-on-surface">22/24 On Pace</span>
+</div>
+<!-- SLA Bar Visualizer -->
+<div class="w-48 h-2 rounded-full bg-surface-container-high overflow-hidden mt-1 flex">
+<div class="h-full bg-primary-container rounded-l-full" style="width: 82%;"></div>
+<div class="h-full bg-error-container" style="width: 18%;"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px] cursor-pointer hover:text-on-surface">help</span>
+</div>
+</div>
+</section>
+<!-- Priority Review Metric Strip (4 cards) -->
+<section class="w-full px-gutter pb-space-lg">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Metric 1: Urgent High-Risk -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-caps text-label-caps text-error tracking-wider uppercase font-semibold">Urgent High-Risk</span>
+<div class="w-7 h-7 rounded-lg bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">priority_high</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-sm my-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">7</span>
+<span class="font-caption text-caption text-error font-medium">SLA &lt; 1 hr remaining</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>Requires immediate triage lock</span>
+</div>
+</div>
+<!-- Metric 2: Tare Gaps -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-caps text-label-caps text-on-secondary-container tracking-wider uppercase font-semibold">Tare Weight Voids</span>
+<div class="w-7 h-7 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">scale</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-sm my-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">11</span>
+<span class="font-caption text-caption text-on-surface-variant font-medium">Uncorroborated gaps</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>Mass deficit &gt; 15% threshold</span>
+</div>
+</div>
+<!-- Metric 3: Pending Supplier Submissions -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase font-semibold">Pending Submissions</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">pending_actions</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-sm my-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">6</span>
+<span class="font-caption text-caption text-primary font-medium">Under clarification</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>CCTV / Origin slip awaiting</span>
+</div>
+</div>
+<!-- Metric 4: Today's Completed Reviews -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-label-caps text-label-caps text-tertiary tracking-wider uppercase font-semibold">Adjudicated Today</span>
+<div class="w-7 h-7 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">gavel</span>
+</div>
+</div>
+<div class="flex items-baseline gap-space-sm my-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">18</span>
+<span class="font-caption text-caption text-tertiary font-medium">Credits locked / signed</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span>99.8% Defensibility rate</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Two-Column Triage Layout -->
+<section class="w-full px-gutter pb-space-xl">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN: Case Queue Roster (5 cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-md">
+<!-- Filter Tabs & Quick Search -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">sort</span>
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Triage Inbox</span>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container text-secondary">LIVE FEED</span>
+</div>
+<!-- Queue Filter Pills -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-medium shadow-sm">
+              All Pending (24)
+            </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md">
+              Critical Voids (7)
+            </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md">
+              Tare Gaps (11)
+            </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md">
+              Temporal Inversions (6)
+            </button>
+</div>
+</div>
+<!-- Case Cards List -->
+<div class="flex flex-col gap-space-sm">
+<!-- Card 1 (Active / Selected) -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-md transition-all cursor-pointer relative overflow-hidden bg-gradient-to-r from-surface-container-lowest via-surface-bright to-surface-container-low" style="outline: 2px solid #2563eb;">
+<div class="absolute top-0 left-0 bottom-0 w-1.5 bg-primary-container"></div>
+<div class="pl-2 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm font-semibold text-primary">EP-2026-00128</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-caps text-label-caps">Risk 78 HIGH</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-error font-medium">
+<span class="material-symbols-outlined text-[14px]">alarm</span>
+<span>Waiting: 42m</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">ABC Recycling Pvt. Ltd.</span>
+<span class="font-caption text-caption text-secondary">Noida Cluster 4 • Reg #UP-EPR-2024-991</span>
+</div>
+<!-- Mass Discrepancy Metric -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between my-1">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline uppercase">Claim vs Supported</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">2,400 KG <span class="text-secondary font-normal">vs</span> 1,850 KG</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-error font-bold uppercase">Mass Deficit</span>
+<span class="font-code-sm text-code-sm font-bold text-error">-550 KG (-22.9%)</span>
+</div>
+</div>
+<!-- Flag Pills -->
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error-container text-on-error-container font-caption text-caption">
+<span class="material-symbols-outlined text-[12px]">link_off</span> Missing tare attachment
+                </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[12px]">schedule</span> Temporal mismatch (42h)
+                </span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer relative overflow-hidden group">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">EP-2026-00130</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-caps text-label-caps">Risk 84 CRIT</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-secondary">
+<span class="material-symbols-outlined text-[14px]">alarm</span>
+<span>Waiting: 1h 15m</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-primary transition-colors">GreenCycle Solutions</span>
+<span class="font-caption text-caption text-secondary">Bhiwandi Hub • Reg #MH-EPR-2023-402</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between my-1">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline uppercase">Claim vs Supported</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">1,250 KG <span class="text-secondary font-normal">vs</span> 800 KG</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-error font-bold uppercase">Mass Deficit</span>
+<span class="font-code-sm text-code-sm font-bold text-error">-450 KG (-36.0%)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error-container text-on-error-container font-caption text-caption">
+<span class="material-symbols-outlined text-[12px]">signature</span> Suspect Weighbridge Cert
+                </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[12px]">pin_drop</span> Geo-anomaly 180km
+                </span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer relative overflow-hidden group">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">EP-2026-00132</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-caps text-label-caps">Risk 84 CRIT</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-secondary">
+<span class="material-symbols-outlined text-[14px]">alarm</span>
+<span>Waiting: 2h 04m</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-primary transition-colors">CleanEarth Smelting</span>
+<span class="font-caption text-caption text-secondary">Gujarat Industrial Area • Reg #GJ-EPR-2025-119</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between my-1">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline uppercase">Claim vs Supported</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">420 KG gold slag <span class="text-secondary font-normal">vs</span> 190 KG</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-error font-bold uppercase">Mass Deficit</span>
+<span class="font-code-sm text-code-sm font-bold text-error">-230 KG (-54.7%)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error-container text-on-error-container font-caption text-caption">
+<span class="material-symbols-outlined text-[12px]">history_toggle_off</span> Smelt batch precedes transit
+                </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[12px]">balance</span> Non-conforming alloy
+                </span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer relative overflow-hidden group">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">EP-2026-00135</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-caps text-label-caps">Risk 64 MED</span>
+</div>
+<div class="flex items-center gap-1 font-caption text-caption text-secondary">
+<span class="material-symbols-outlined text-[14px]">alarm</span>
+<span>Waiting: 3h 10m</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold group-hover:text-primary transition-colors">RegenTech Systems</span>
+<span class="font-caption text-caption text-secondary">Chennai SEZ • Reg #TN-EPR-2024-811</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between my-1">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-outline uppercase">Claim vs Supported</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">3,100 KG <span class="text-secondary font-normal">vs</span> 2,650 KG</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-secondary font-bold uppercase">Mass Deficit</span>
+<span class="font-code-sm text-code-sm font-bold text-secondary-container-variant text-on-secondary-container">-450 KG (-14.5%)</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-1.5 pt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[12px]">inventory</span> Mixed polymer discrepancy
+                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Deep-Dive Case Adjudication Docket (7 cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-md">
+<!-- Active Case Main Header Card -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm pb-space-sm border-b border-surface-container">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-code-sm text-code-sm font-bold">CASE EP-2026-00128</span>
+<span class="text-outline">•</span>
+<span class="font-caption text-caption text-secondary font-medium">BATCH-8842-DL</span>
+<span class="text-outline">•</span>
+<span class="font-caption text-caption text-secondary">Plastic Type II (HDPE)</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">ABC Recycling Pvt. Ltd. Adjudication Docket</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Lead Compliance Investigator: <span class="font-medium text-on-surface">Elena Vance (You)</span> • Auto-flagged by Forensic Rule-Engine v4.2</span>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<button class="h-9 px-3 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                Audit Log
+              </button>
+<button class="h-9 px-3 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">share</span>
+                Export Pack
+              </button>
+</div>
+</div>
+<!-- Risk & Anomaly Breakdown Banner -->
+<div class="flex flex-col gap-space-sm">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Flagged Forensic Incongruences (2 Detected)</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<!-- Anomaly 1 -->
+<div class="p-space-md rounded-xl bg-error-container/40 flex flex-col gap-1.5">
+<div class="flex items-center gap-2 text-on-error-container">
+<span class="material-symbols-outlined text-[20px] text-error">report</span>
+<span class="font-headline-md text-headline-md font-bold text-error">Severe Mass Incongruence</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-error-container">
+                  Declared tare gross 2,400 KG vs 1,850 KG verified net weight at collection yard. <strong class="font-semibold">-550 KG uncorroborated phantom volume</strong> detected across weighbridge sync.
+                </p>
+<div class="flex items-center justify-between pt-1">
+<span class="font-code-sm text-code-sm font-semibold text-error">Confidence Gap: 98.4%</span>
+<span class="font-caption text-caption text-on-surface-variant">Deficit: 22.9%</span>
+</div>
+</div>
+<!-- Anomaly 2 -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col gap-1.5">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[20px] text-primary">schedule</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Temporal Inversion</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Pelletization furnace charging timestamp precedes origin consolidation gate scan by <strong class="font-semibold text-on-surface">42.2 hours</strong>. Physically impossible transfer timeline.
+                </p>
+<div class="flex items-center justify-between pt-1">
+<span class="font-code-sm text-code-sm font-semibold text-primary">Chronology Delta: +42.2h</span>
+<span class="font-caption text-caption text-on-surface-variant">Rule: RE-TEMP-04</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side-by-Side Evidence Comparison -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Side-by-Side Proof Slip Comparison</span>
+<span class="font-caption text-caption text-primary cursor-pointer hover:underline">Open Split Inspector ↗</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Evidence 1: Origin Slip -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Origin Tare Weigh Slip</span>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-surface-container-highest text-on-surface">#WB-8812</span>
+</div>
+<div class="h-32 w-full rounded-lg overflow-hidden relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close up photograph of an official industrial certified digital weighbridge receipt on textured paper showing serial numbers, net mass readings of 1850 KG, and timestamp stamp marks under neutral office lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq6Jiglk8t0ro7s86j1S5yfQRcN1UarlcDxzbFDqACZC-JJpVf0_DcDR6sscFyxquvL-Ywd-dXki9A1vu33SxbCML2I1w2Mw1jjot5t4h41M8IFPcaaScQBttk-iDYydgCRTBYJxsWtQeHZpGsFUbRtJFW4CManvlFqlDMO9_YpdM8mpbLAHTd-UgnDChR8YwSxsp5_kqz4Wcd5MNjl1sRkKqCpQkjfG4d58fTmhXYShgkirVIcAoCCQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent flex items-end p-2.5">
+<span class="font-code-sm text-code-sm text-inverse-on-surface font-medium">Digital Signature: VERIFIED-Noida-Yard-04</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 font-caption text-caption">
+<div class="flex flex-col">
+<span class="text-secondary">Gross Vehicle:</span>
+<span class="font-code-sm text-code-sm font-bold text-on-surface">8,420 KG</span>
+</div>
+<div class="flex flex-col">
+<span class="text-secondary">Vehicle Tare:</span>
+<span class="font-code-sm text-code-sm font-bold text-on-surface">6,570 KG</span>
+</div>
+<div class="flex flex-col">
+<span class="text-secondary">Corroborated Net:</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">1,850 KG NET</span>
+</div>
+<div class="flex flex-col">
+<span class="text-secondary">Time of Scan:</span>
+<span class="font-code-sm text-code-sm text-on-surface">14-OCT 10:14 IST</span>
+</div>
+</div>
+</div>
+<!-- Evidence 2: Processor Claim Slip -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Processor Claim Slip</span>
+</div>
+<span class="font-code-sm text-code-sm px-2 py-0.5 rounded bg-error-container text-on-error-container font-semibold">#REC-2026-88</span>
+</div>
+<div class="h-32 w-full rounded-lg overflow-hidden relative shadow-sm">
+<img class="w-full h-full object-cover" data-alt="High resolution scan of an enterprise recycling batch fulfillment certificate document with handwritten notes and inflated figures highlighting 2400 KG declared plastic flakes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmlPXqithSueRNusOgIw0Eb_C0uqeRLtwgRdK9TRlts_6A_--41lt5IcHVma6Zq0CYdWQRVoLfkREWLo3m-NGXkgJEBh8aFW5So31Dt96_0JryUhcVsaXIscf5eCmHG1qI-Mj-5avHPykc14AJj7gD4EagdkCBg8yn6Hl39ku7Xbd3MTQ6-xeUhPoPo1r0SAgSUQlnqLc0BAuAtVuerhEZui25CbQj9ayvJS6NSKU-ycby7t7TpqiAiQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent flex items-end p-2.5">
+<span class="font-code-sm text-code-sm text-error-container font-medium">Validation: HASH-MISMATCH (-550 KG)</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 font-caption text-caption">
+<div class="flex flex-col">
+<span class="text-secondary">Declared Batch:</span>
+<span class="font-code-sm text-code-sm font-bold text-on-surface">Batch 8842-DL</span>
+</div>
+<div class="flex flex-col">
+<span class="text-secondary">Credit Claimed:</span>
+<span class="font-code-sm text-code-sm font-bold text-error">2,400 KG EPR</span>
+</div>
+<div class="flex flex-col">
+<span class="text-secondary">Phantom Mass:</span>
+<span class="font-code-sm text-code-sm font-bold text-error">+550 KG Overclaim</span>
+</div>
+<div class="flex flex-col">
+<span class="text-secondary">Processed At:</span>
+<span class="font-code-sm text-code-sm text-on-surface">12-OCT 15:52 IST</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Auditor Decision Matrix -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Auditor Adjudication Decision</span>
+<span class="font-caption text-caption text-on-surface-variant">Select legal disposition</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Option A (Recommended) -->
+<label class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer flex items-start gap-space-sm relative" style="outline: 1.5px solid #2563eb;">
+<input checked="" class="mt-1 w-4 h-4 text-primary focus:ring-primary accent-primary" name="adjudication_choice" type="radio"/>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">Option A: Enforce 550 KG Mass Void &amp; Issue Escrow Freeze</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-container text-on-primary font-label-caps text-label-caps font-semibold">RECOMMENDED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                    Automatically subtract 550 KG phantom volume from registry ledger, freeze pending tradeable credits in escrow, and emit regulatory contradiction notice to state pollution control board.
+                  </p>
+</div>
+</label>
+<!-- Option B -->
+<label class="p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low shadow-sm transition-colors cursor-pointer flex items-start gap-space-sm">
+<input class="mt-1 w-4 h-4 text-primary focus:ring-primary accent-primary" name="adjudication_choice" type="radio"/>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">Option B: Issue Formal Notice &amp; Request Uncut Dock CCTV Footage</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">SUPPLEMENTARY PROOF</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                    Gives recycler 48 hours statutory cure period to upload continuous weighing video and calibrated tare telemetry.
+                  </p>
+</div>
+</label>
+<!-- Option C -->
+<label class="p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low shadow-sm transition-colors cursor-pointer flex items-start gap-space-sm">
+<input class="mt-1 w-4 h-4 text-primary focus:ring-primary accent-primary" name="adjudication_choice" type="radio"/>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">Option C: Override Flag &amp; Approve Adjusted Credit for 1,850 KG Only</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                    Authorizes issuance capped to substantiated weight without penal escrow sanction. Requires dual sign-off.
+                  </p>
+</div>
+</label>
+<!-- Option D -->
+<label class="p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low shadow-sm transition-colors cursor-pointer flex items-start gap-space-sm">
+<input class="mt-1 w-4 h-4 text-primary focus:ring-primary accent-primary" name="adjudication_choice" type="radio"/>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-label-md text-label-md font-bold text-on-surface">Option D: Mark False Positive</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                    Dismiss forensic contradiction as sensor drift or OCR parsing error. Retrains ML detection weights.
+                  </p>
+</div>
+</label>
+</div>
+</div>
+<!-- Compliance Auditor Notes -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-outline uppercase font-semibold">Auditor Case Log &amp; Formal Opinion</span>
+<span class="font-caption text-caption text-secondary">Inserted into immutable hash docket</span>
+</div>
+<!-- Preset Tag Inserts -->
+<div class="flex flex-wrap items-center gap-1.5 pb-1">
+<span class="font-caption text-caption text-secondary mr-1">Quick Macros:</span>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-caps text-label-caps hover:bg-surface-container-high transition-colors" type="button">
+                + Tare Void Confirmed
+              </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-caps text-label-caps hover:bg-surface-container-high transition-colors" type="button">
+                + Geofence Breach
+              </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-caps text-label-caps hover:bg-surface-container-high transition-colors" type="button">
+                + Subpoena Recommended
+              </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-caps text-label-caps hover:bg-surface-container-high transition-colors" type="button">
+                + Escrow Seizure
+              </button>
+</div>
+<textarea class="w-full p-space-md rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary shadow-sm" rows="3" style="border: 1px solid #CBD5E1;">Forensic analysis confirms 550 KG tare deficit on BATCH-8842-DL. Origin weighbridge slip #WB-8812 verified via SHA-256 seal. Processing slip timestamp contains temporal inversion of 42.2 hours. Recommend executing Option A and escrow freezing credit issuance pending formal audit response.</textarea>
+</div>
+<!-- Bottom Action Dock -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-md border-t border-surface-container">
+<div class="flex items-center gap-space-xs w-full sm:w-auto">
+<button class="h-10 px-3.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container flex items-center gap-1 shadow-sm transition-all w-full sm:w-auto justify-center" type="button">
+<span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+<span>Request Clarification</span>
+</button>
+<button class="h-10 px-3.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container flex items-center gap-1 shadow-sm transition-all w-full sm:w-auto justify-center" type="button">
+<span class="material-symbols-outlined text-[18px]">supervisor_account</span>
+<span>Transfer to Senior Counsel</span>
+</button>
+</div>
+<!-- High Visibility Danger CTA -->
+<button class="h-11 px-5 rounded-lg bg-error text-on-error font-label-md text-label-md font-bold flex items-center justify-center gap-space-xs shadow-md shadow-error/20 hover:bg-error/90 transition-all w-full sm:w-auto" type="button">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+<span>Freeze EPR Credits &amp; Issue Contradiction Notice</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></main></div></body></html>

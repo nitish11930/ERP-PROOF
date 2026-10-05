@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed":"#d9e2ff","surface-container-lowest":"#ffffff","on-primary":"#ffffff","primary":"#004ac6","on-error-container":"#93000a","error":"#ba1a1a","error-container":"#ffdad6","on-secondary-fixed":"#081a3c","on-tertiary-container":"#f6edff","primary-fixed-dim":"#b4c5ff","on-background":"#0b1c30","on-error":"#ffffff","outline-variant":"#c3c6d7","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#5516be","on-tertiary-fixed":"#23005c","tertiary-fixed":"#e9ddff","primary-container":"#2563eb","tertiary-fixed-dim":"#d0bcff","tertiary":"#632ecd","on-secondary-container":"#4c5b80","inverse-surface":"#213145","tertiary-container":"#7d4ce7","surface-bright":"#f8f9ff","on-primary-fixed-variant":"#003ea8","on-surface-variant":"#434655","inverse-on-surface":"#eaf1ff","surface-container-low":"#eff4ff","on-secondary-fixed-variant":"#37466a","secondary-fixed-dim":"#b6c6f1","surface":"#f8f9ff","inverse-primary":"#b4c5ff","on-primary-fixed":"#00174b","on-surface":"#0b1c30","surface-tint":"#0053db","surface-variant":"#d3e4fe","secondary-container":"#c4d4ff","outline":"#737686","surface-container-highest":"#d3e4fe","background":"#f8f9ff","on-primary-container":"#eeefff","secondary":"#4f5e83","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","primary-fixed":"#dbe1ff","on-tertiary":"#ffffff","surface-container":"#e5eeff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter":"1.5rem","space-md":"1rem","space-xl":"2rem","space-xs":"0.25rem","space-sm":"0.5rem","margin":"2rem","gutter-mobile":"1rem","margin-mobile":"1rem","space-lg":"1.5rem"},"fontFamily":{"headline-xl":["Inter"],"label-md":["Inter"],"display-lg":["Inter"],"body-lg":["Inter"],"label-caps":["Inter"],"headline-lg":["Inter"],"caption":["Inter"],"display-lg-mobile":["Inter"],"body-sm":["Inter"],"body-md":["Inter"],"code-sm":["JetBrains Mono"],"headline-md":["Inter"]},"fontSize":{"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"display-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.025em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"600"}],"headline-lg":["22px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"caption":["12px",{"lineHeight":"16px","fontWeight":"400"}],"display-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-md":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-inverse-surface z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-inverse-surface"><img alt="Brand logo. - Primary color: #4f8cff
+- Font: inter
+- Mode: dark
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WHMuXBk_-dt3sQaB2pQg_2mc8fZg2-nWzy3sJaYTe_dBilYx-aDUMBnALl9TEdUlOrEciBR_VnAd_r0PINK7EBIZTq5YrCo44bTT6WwNu6X8N-LXazPo6Q6faVFCpvEvr96irK3d9uvReg-c2ZY4-iFCriTiAlkmUGkkUM30XQOcf69_a5gLSYsETYaC7BdkZb-CWSevrYg_9N09ShEMRxLwyEKOnYckDnDqRDPGRSALhTN1r-0qlC5bU"/><div class="flex flex-col min-w-0 flex-1"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md font-bold text-inverse-on-surface truncate">EPR Proof</span><span class="material-symbols-outlined text-primary-fixed-dim text-[16px]">verified</span></div><span class="font-caption text-caption text-secondary-fixed-dim tracking-wide truncate">Evidence Intelligence</span></div></div><nav class="flex flex-col gap-space-xs px-space-sm mt-space-md" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-label-md text-label-md">Dashboard</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="verify-claim" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">fact_check</span><span class="font-label-md text-label-md">Verify Claim</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="cases" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span class="font-label-md text-label-md">Cases</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="review-queue" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">rule</span><span class="font-label-md text-label-md">Review Queue</span></div><span class="px-1.5 py-0.5 rounded-full font-label-caps text-label-caps bg-tertiary-container text-on-tertiary-container">24</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="evidence-library" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-label-md text-label-md">Evidence Library</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="analytics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-label-md text-label-md">Analytics</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-md text-label-md">Settings</span></div></a></nav></div><div class="p-space-sm m-space-sm rounded-xl bg-on-background flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Wm0hBg52YYTzx-BYr9egznFX1gcWCJkUkxyW-7rE7UCGX5IrU1yOL2YJ7n8NYRKsRL1e32JvWtYOOrdMxWApo47ORPsMdMuyfQedUz9iRz3YAb_VZ72oiDDEQ83nmaAn_w-4pZMA-nX4Dcy20wqUbbCG6K6OGX03yuKoPssSdB7v2AntECRZopUNoyYz7If-wQb_fxi_9SLw3T6-gaXVC9gRzGEFHeT73vhpkcp5hMHijein7kzfdDaRKt"/><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-inverse-on-surface font-semibold truncate">Elena Vance</span><span class="font-caption text-caption text-secondary-fixed-dim truncate">Chief Risk Officer • Demo</span></div></div><div class="flex items-center gap-space-xs pt-space-xs"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-caps text-label-caps text-secondary-fixed-dim">Online • Operational</span></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex flex-col"><div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption"><span>EPR Intel</span><span>/</span><span class="text-primary font-medium">Dashboard</span></div><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Executive Mission Control</span><span class="font-label-caps text-label-caps px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant font-medium">Live Telemetry</span></div></div></div><div class="flex items-center gap-space-sm"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span><input class="h-10 pl-9 pr-4 w-72 lg:w-96 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Search telemetry, claims, or proof hashes... ⌘K" type="text"/></div><button class="h-10 px-space-sm rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container flex items-center gap-space-xs font-label-md text-label-md transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">tune</span><span class="hidden xl:inline">Filter</span></button><button class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">help_outline</span></button><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Wm0hBg52YYTzx-BYr9egznFX1gcWCJkUkxyW-7rE7UCGX5IrU1yOL2YJ7n8NYRKsRL1e32JvWtYOOrdMxWApo47ORPsMdMuyfQedUz9iRz3YAb_VZ72oiDDEQ83nmaAn_w-4pZMA-nX4Dcy20wqUbbCG6K6OGX03yuKoPssSdB7v2AntECRZopUNoyYz7If-wQb_fxi_9SLw3T6-gaXVC9gRzGEFHeT73vhpkcp5hMHijein7kzfdDaRKt"/></div></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full px-gutter py-space-md gap-space-lg text-on-surface">
+<!-- Breadcrumbs & Tactical Command Header -->
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption">
+<span>EPR Intel</span>
+<span class="text-outline-variant">/</span>
+<span>Evidence</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-medium">Evidence Library</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm pt-0.5">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">Evidence Library &amp; Asset Repository</h1>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider font-semibold">3,842 Ingested Forensic Artifacts • SHA-256 Ledger Locked</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Central immutable vault for multi-modal chain-of-custody verification, OCR coordinate corroboration, and Zero-Knowledge audits.</p>
+</div>
+<!-- Quick Operations -->
+<div class="flex flex-wrap items-center gap-space-sm w-full lg:w-auto">
+<button class="flex-1 lg:flex-initial h-10 px-4 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container-low shadow-sm flex items-center justify-center gap-2 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+<span>Bulk Verify Integrity</span>
+</button>
+<button class="flex-1 lg:flex-initial h-10 px-4 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-all shadow-md flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+<span>Upload Supplementary Evidence</span>
+</button>
+</div>
+</div>
+<!-- Search & Fast Telemetry Filters Bar -->
+<div class="p-space-sm rounded-xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-full h-10 pl-10 pr-4 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest shadow-inner transition-colors" placeholder="Search by SHA-256 Hash, File Name, Weighbridge ID, FastTag Toll, Recycler..." type="text" value="Case EP-2026-00128"/>
+</div>
+<div class="flex items-center gap-space-xs">
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface-variant font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[16px] text-primary">hub</span>
+<span>HYPERLEDGER FABRIC #19,842,109</span>
+</div>
+<div class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">lock_clock</span>
+<span>100% MERKLE ANCHORED</span>
+</div>
+</div>
+</div>
+<!-- Evidence Stream Taxonomy Metrics (4 Metric Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Weighbridge Tare -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Weighbridge Tare Tickets</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">1,420</span>
+<span class="font-caption text-caption text-secondary">files indexed</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">scale</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex items-center gap-1 text-emerald-700 font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[16px]">task_alt</span>
+<span>99.8% OCR Corroboration</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">0.02s sync</span>
+</div>
+</div>
+<!-- Card 2: Logistics & FastTag -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Logistics &amp; FastTag Tolls</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">984</span>
+<span class="font-caption text-caption text-secondary">live telemetry streams</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex items-center gap-1 text-emerald-700 font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[16px]">location_searching</span>
+<span>98.4% GPS locked</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">14 Geofences</span>
+</div>
+</div>
+<!-- Card 3: Processor Smelter Furnace Logs -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Smelter Furnace Logs</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">812</span>
+<span class="font-caption text-caption text-secondary">batch telemetries</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex items-center gap-1 text-error font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span>24 unresolved flags</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">3 Critical</span>
+</div>
+</div>
+<!-- Card 4: Satellite & Dock Surveillance -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Satellite &amp; Dock Feeds</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-xl text-headline-xl text-on-surface font-bold">626</span>
+<span class="font-caption text-caption text-secondary">multispectral captures</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[20px]">satellite_alt</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low -mx-space-md -mb-space-md px-space-md py-2.5 rounded-b-xl">
+<div class="flex items-center gap-1 text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span>Copernicus Sentinel-2 sync</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">10m resolution</span>
+</div>
+</div>
+</div>
+<!-- Document Explorer: 3-Panel Asymmetric Architectural Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-start">
+<!-- LEFT PANEL: Filter Taxonomy Tree (3 Cols) -->
+<div class="lg:col-span-3 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">filter_list</span>
+<span class="font-headline-md text-headline-md text-on-surface">Taxonomy Filters</span>
+</div>
+<button class="font-caption text-caption text-primary hover:underline font-semibold" type="button">Reset</button>
+</div>
+<!-- Filter Group 1: Document Modality -->
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Artifact Modality</span>
+<div class="flex flex-col gap-1 text-body-sm font-body-sm">
+<label class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low text-on-surface cursor-pointer font-medium hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-2">
+<input checked="" class="w-4 h-4 accent-primary rounded" type="checkbox"/>
+<span>Weighbridge Slips</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">1,420</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input checked="" class="w-4 h-4 accent-primary rounded" type="checkbox"/>
+<span>Transport &amp; FastTag Logs</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">984</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input checked="" class="w-4 h-4 accent-primary rounded" type="checkbox"/>
+<span>Smelting Thermal Logs</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">812</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input class="w-4 h-4 accent-primary rounded" type="checkbox"/>
+<span>CPCB Regulatory Permits</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">418</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input class="w-4 h-4 accent-primary rounded" type="checkbox"/>
+<span>CCTV Optical Feed Video</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">208</span>
+</label>
+<label class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2">
+<input class="w-4 h-4 accent-primary rounded" type="checkbox"/>
+<span>Satellite Multispectral TIFF</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">626</span>
+</label>
+</div>
+</div>
+<!-- Filter Group 2: Cryptographic Status -->
+<div class="flex flex-col gap-2 pt-2">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Integrity State</span>
+<div class="flex flex-col gap-1 text-body-sm font-body-sm">
+<label class="flex items-center justify-between p-1.5 rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>Cryptographically Validated</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">3,612</span>
+</label>
+<label class="flex items-center justify-between p-1.5 rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>Hash Mismatch / Divergent</span>
+</div>
+<span class="font-code-sm text-code-sm text-error font-semibold font-mono">18</span>
+</label>
+<label class="flex items-center justify-between p-1.5 rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span>Under Review / Quarantined</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">148</span>
+</label>
+<label class="flex items-center justify-between p-1.5 rounded-lg hover:bg-surface-container-low text-on-surface cursor-pointer">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>OCR Low-Confidence (&lt;85%)</span>
+</div>
+<span class="font-code-sm text-code-sm text-secondary font-mono">64</span>
+</label>
+</div>
+</div>
+<!-- Filter Group 3: Recycler Organization -->
+<div class="flex flex-col gap-2 pt-2">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Recycler Facility</span>
+<select class="w-full h-10 px-3 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none">
+<option>All Accredited Facilities (42)</option>
+<option selected="">Apex Eco-Recovery India Ltd</option>
+<option>EcoMetals Processing Hub - Ahmedabad</option>
+<option>GreenMatrix Waste Corp - Greater Noida</option>
+<option>Vanguard Thermal Metallurgy - Vapi</option>
+</select>
+</div>
+<!-- Date Range Filter -->
+<div class="flex flex-col gap-2 pt-2">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Ingestion Window</span>
+<div class="grid grid-cols-2 gap-2">
+<input class="h-9 px-2 text-center rounded-lg bg-surface-container-low font-code-sm text-code-sm text-on-surface focus:outline-none" type="text" value="01 Feb 2026"/>
+<input class="h-9 px-2 text-center rounded-lg bg-surface-container-low font-code-sm text-code-sm text-on-surface focus:outline-none" type="text" value="28 Feb 2026"/>
+</div>
+</div>
+<!-- Chain Audit Stamp -->
+<div class="p-3 rounded-xl bg-surface-container flex items-center gap-3 mt-1">
+<span class="material-symbols-outlined text-primary text-[22px]">security</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Zero-Knowledge Guard</span>
+<span class="font-caption text-caption text-secondary">All queries preserve client confidential weight formulas</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CENTER PANEL: Document Grid / List Explorer (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Displaying 6 of 3,842 Artifacts (Case EP-2026-00128)</span>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-sm" title="Card View">
+<span class="material-symbols-outlined text-[18px]">view_module</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-lowest transition-colors" title="List View">
+<span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+</button>
+</div>
+</div>
+<!-- Item 1: Active / Selected Document -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-md ring-2 ring-primary transition-all cursor-pointer relative overflow-hidden">
+<div class="absolute top-0 right-0 w-2 h-full bg-primary"></div>
+<div class="flex items-start gap-space-md">
+<div class="relative w-16 h-20 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0 shadow-inner flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-90" data-alt="A clean industrial scanned document preview of an official weighing tare ticket with stamp and red handwritten calibration marks on bright off-white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYqTAtNMfMjaQDzoL1McyVrGUqD9JTwChH5Fq3QlVhlLXipoykzIXFcQE9mOI1XrmlrEJStPFZWegVSCnJV4fAKaLBeaW7mN4Frnb1j6TpvrxQ60iqec0Kti8nRn6WOSvKi044kuKa9IOs6V7FiWgaHshuEqaLKbrNernj2rc5Gz1E9yopngtn8_2SSye6cuPbdE3KTLSMriW1JBx9et3u-B1O6F7ZuEyYbMNyJt-VXU3st6ZahEWrCQ"/>
+<span class="absolute bottom-1 right-1 font-label-caps text-[9px] px-1 py-0.5 rounded bg-on-background/80 text-inverse-on-surface font-mono">PDF</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">Origin_Weighbridge_Slip_WB8812.pdf</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-caps text-label-caps bg-emerald-50 text-emerald-800 font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Verified Green
+              </span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-on-surface-variant font-caption text-caption">
+<span>Case: <strong class="text-on-surface font-semibold">EP-2026-00128</strong></span>
+<span>•</span>
+<span>Tare: <strong class="text-primary font-semibold">1,850 KG</strong></span>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2 bg-surface-container-low -mx-2 px-2 py-1 rounded">
+<span class="font-code-sm text-code-sm text-secondary font-mono truncate max-w-[200px]">SHA: 0x4fa8...c819</span>
+<span class="font-label-caps text-label-caps text-primary font-semibold flex items-center gap-1">
+                Active Inspect <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Logistics / FastTag JSON -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-start gap-space-md">
+<div class="relative w-16 h-20 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0 shadow-inner flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Satellite GIS telemetry highway route plot visual with glowing blue GPS breadcrumbs over high resolution Indian expressway corridor map." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsP1yojaiPFUlRgzRIBBvUz-WuBfYc_zXDYnZ6U-o32sMMuNSHncifStWLDMqg3NV1Ok1PTqz-sJAEetekd5yp6kaTHdBvcJhU1EE03IlEh6kYYp4uV1bhALrk1_eG0bbaiQNKmfwW0qs9yWyI4Oi9nGJpd6pfPbMLWIcJJaB6jaX_atIHyHu9KKp5e_HPvler43MMUHzA58EBBO-ASv2Y_mZ87lAArpd7OZvNvHiShWk9DyBhCr4C9g"/>
+<span class="absolute bottom-1 right-1 font-label-caps text-[9px] px-1 py-0.5 rounded bg-on-background/80 text-inverse-on-surface font-mono">JSON</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">InTransit_FastTag_TollPass_DL10GA4412.json</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-caps text-label-caps bg-emerald-50 text-emerald-800 font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Corroborated
+              </span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-on-surface-variant font-caption text-caption">
+<span>Case: <strong class="text-on-surface font-semibold">EP-2026-00128</strong></span>
+<span>•</span>
+<span>14 Waypoints Ingested</span>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2">
+<span class="font-code-sm text-code-sm text-secondary font-mono truncate max-w-[200px]">SHA: 0x9b32...f4e1</span>
+<span class="font-caption text-caption text-secondary">18 mins ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3: Contradiction Smelter Batch -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer border-l-4 border-error">
+<div class="flex items-start gap-space-md">
+<div class="relative w-16 h-20 rounded-lg overflow-hidden bg-error-container/30 flex-shrink-0 shadow-inner flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Close-up of thermal metallurgical lab analysis report stamped with red warning discrepancies and underlined weight delta columns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB4SnssD2S2fvd4z_UvUiRfEHmH7rHdi7TMq0-fKocWtVG1pH_11dMYZHOBrKQLnuCPLVLuI2r9N5JQ9ytEjEtP0HMhnD-VJeXYZ6wfnwHYKY5qVgp4tp63ttGYvvYJunMwN-2zkjBSnsiasi15xZSZUyCaFNGsps8yzjTGnYBP_ZUl9maVCf1LQH39hnHtocWavJvg3yB6wSQS5i5UqI4a0an5KA79Ss6WjxJapKrDhQAHy-MSpnO3g"/>
+<span class="absolute bottom-1 right-1 font-label-caps text-[9px] px-1 py-0.5 rounded bg-error text-on-error font-mono">PDF</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">Processor_Smelter_Charge_Batch8842.pdf</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-caps text-label-caps bg-error-container text-on-error-container font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Contradiction Flag
+              </span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-on-surface-variant font-caption text-caption">
+<span>Case: <strong class="text-on-surface font-semibold">EP-2026-00128</strong></span>
+<span>•</span>
+<span class="text-error font-semibold">Declared: 2,400 KG (+550 KG Delta)</span>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2">
+<span class="font-code-sm text-code-sm text-error font-mono truncate max-w-[200px]">SHA: 0x11ce...aa02</span>
+<span class="font-caption text-caption text-error font-medium">Critical Audit Queue</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 4: Satellite Sentinel-2 Capture -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-start gap-space-md">
+<div class="relative w-16 h-20 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0 shadow-inner flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="High precision Copernicus Sentinel-2 multispectral satellite overhead image showing recycling industrial yard storage piles and truck loading bays in high contrast false-color IR." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2NEDMZoem5Y7gfgznxcp3IP7TTXMDm_YXQVzKomoNdt4AtFXKlRtuTL76WdgOrU6TSc_uVZV-o7rV2le9NveLtuVZxRbjh_4BO0rw1CEQcN-SZhv-fvwxTFFOFAzEzKMgD9KNzEHVfopfU2jvYvF9zOhIwv_TjYYK7xpV5qt29bRYvoP82PqN5YU_5aOKeKZ5uTRAR7uz8BdkH_QfrDA7XXKKVGz-nRN2Kd6mlInX2HiEpAOKgBXDuA"/>
+<span class="absolute bottom-1 right-1 font-label-caps text-[9px] px-1 py-0.5 rounded bg-on-background/80 text-inverse-on-surface font-mono">TIFF</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">Sentinel2_Copernicus_NoidaYard_Multispectral.tif</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-caps text-label-caps bg-primary-fixed text-on-primary-fixed-variant font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Cloud Cover 0%
+              </span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-on-surface-variant font-caption text-caption">
+<span>Coords: <strong class="text-on-surface font-mono">28.6289° N, 77.3790° E</strong></span>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2">
+<span class="font-code-sm text-code-sm text-secondary font-mono truncate max-w-[200px]">SHA: 0x88f2...00c4</span>
+<span class="font-caption text-caption text-secondary">ESA Sentinel Hub</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 5: CPCB Environmental Consent -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-start gap-space-md">
+<div class="relative w-16 h-20 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0 shadow-inner flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Government certification document with green stamp and official national environmental board seal on fine parchment paper." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4dNeEB8caGYZupsxVqWM359qAA411jus9rml0kwIxrHiu_H7WK54xDswXhRZ1JdottW2Q3UutZeSo0QpNpUtfgWs7quiYhWFn_hMboPAUZsacSLZBmE_EssTUvu1Y_7ZTb6-LDBKRxZKwLyEWfL_t3j_XI_lpv9BeG_IORyo3taEcd9794He5PSvs6411mblzZFtzQVU7L8wtmVzVhHp5KHx8HTxLmCeX-YBjWCh5W4SQV_dGp31AUg"/>
+<span class="absolute bottom-1 right-1 font-label-caps text-[9px] px-1 py-0.5 rounded bg-on-background/80 text-inverse-on-surface font-mono">PDF</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">CPCB_Pollution_Consent_Valid2027.pdf</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-caps text-label-caps bg-emerald-50 text-emerald-800 font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Validated Green
+              </span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-on-surface-variant font-caption text-caption">
+<span>Issuer: <strong class="text-on-surface">Central Pollution Control Board</strong></span>
+<span>•</span>
+<span>Apex Eco-Recovery</span>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2">
+<span class="font-code-sm text-code-sm text-secondary font-mono truncate max-w-[200px]">SHA: 0x5a17...e321</span>
+<span class="font-caption text-caption text-secondary">Expires Mar 2027</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 6: Weighbridge Ahmedabad -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-start gap-space-md">
+<div class="relative w-16 h-20 rounded-lg overflow-hidden bg-surface-container-high flex-shrink-0 shadow-inner flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="High contrast thermal weigh scale receipt printout with barcode and calibration serial stamps." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC40RbOylDsUHacS_G-WHiBITK1M15FxOZuNCCvn9xeEKFJI7nfxp4pC78YD8ApWV9O9fFgDtDN9F3xbZSj-VINHqhiEm7DrtB6OwUKqPI2WXzwRYCm4NNRvZMMTaybdyt0NqABm9HEjKvKEFj2_L47wbhmcc4V5_2snSGqAq7gJEAx2cb36bzQBp7adOyawsTLjHiBYwKJD2Hb8NJI3XrwJu611WxZ8gCN_A1X9MrljlXLLggOGdGXAg"/>
+<span class="absolute bottom-1 right-1 font-label-caps text-[9px] px-1 py-0.5 rounded bg-on-background/80 text-inverse-on-surface font-mono">PDF</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface truncate">Weighbridge_Tare_WB9921_Ahmedabad.pdf</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-label-caps text-label-caps bg-emerald-50 text-emerald-800 font-semibold whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Verified
+              </span>
+</div>
+<div class="flex items-center gap-2 mt-1 text-on-surface-variant font-caption text-caption">
+<span>Recycler: <strong class="text-on-surface">EcoMetals Ltd</strong></span>
+<span>•</span>
+<span>Gross: <strong class="text-primary font-semibold">6,800 KG</strong></span>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2">
+<span class="font-code-sm text-code-sm text-secondary font-mono truncate max-w-[200px]">SHA: 0xef29...912a</span>
+<span class="font-caption text-caption text-secondary">Ingested Yesterday</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Cursor Index -->
+<div class="flex items-center justify-between p-space-sm rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-caption text-caption text-secondary">Showing 1 to 6 of 3,842 artifacts</span>
+<div class="flex items-center gap-1">
+<button class="h-8 w-8 flex items-center justify-center rounded bg-surface-container-low text-secondary hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-primary-container text-on-primary font-label-caps font-semibold">1</button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-surface-container-low text-on-surface hover:bg-surface-container font-label-caps">2</button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-surface-container-low text-on-surface hover:bg-surface-container font-label-caps">3</button>
+<span class="px-1 text-secondary text-caption">...</span>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-surface-container-low text-on-surface hover:bg-surface-container font-label-caps">641</button>
+<button class="h-8 w-8 flex items-center justify-center rounded bg-surface-container-low text-secondary hover:text-on-surface">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: Selected Document Deep-Dive & Forensic Telemetry (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-md flex flex-col gap-space-md sticky top-20">
+<!-- Inspector Title Header -->
+<div class="flex items-start justify-between pb-space-xs">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-primary font-bold tracking-wider">Forensic Inspector</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface truncate">Origin_Weighbridge_Slip_WB8812.pdf</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface" title="Expand Fullscreen Preview">
+<span class="material-symbols-outlined text-[18px]">fullscreen</span>
+</button>
+<button class="p-1.5 rounded-lg text-secondary hover:bg-surface-container-low hover:text-on-surface" title="Share Proof Package">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</div>
+<!-- OCR Coordinate Preview Canvas with Bounding Boxes -->
+<div class="relative w-full h-56 rounded-xl bg-surface-container-high overflow-hidden shadow-inner flex flex-col items-center justify-center group">
+<img class="w-full h-full object-cover" data-alt="Official high-resolution industrial weighbridge ticket document with precise neon-blue and emerald optical character recognition OCR computer-vision bounding boxes highlighting weight numbers and date stamps." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnqX_SHazgE6zYYQ3bnA4oC2PZYpnjyAc-PcDYoJQVeK83MXgeFLqPcecV593kAO2IywoYRAikDwfkDd0FcS25bnY260XQajsyI1Fc7dFGyeBBtW6_QXHza08gVh599yV25T5y0KvmhFOVd_daIzLvbX1xkguTuRaY6sQe2Ce-g3V0Mp__0cAHqScwRF-ucyln7vzCUhM07Qyc83ojNzQ1rNXyc933jfEIsYNAgYZKDSH9kb0_Rtgvsg"/>
+<!-- Mock OCR Bounding Boxes Visual Overlays -->
+<div class="absolute inset-0 bg-inverse-surface/10 pointer-events-none">
+<!-- Box 1: Tare Weight -->
+<div class="absolute top-[28%] left-[45%] w-[38%] h-[18%] border-2 border-primary bg-primary/20 rounded flex items-start justify-between px-1">
+<span class="bg-primary text-on-primary font-code-sm text-[10px] px-1 rounded-sm leading-tight">TARE: 1,850 KG (99.8%)</span>
+</div>
+<!-- Box 2: Serial WB -->
+<div class="absolute top-[52%] left-[12%] w-[32%] h-[14%] border-2 border-emerald-500 bg-emerald-500/20 rounded flex items-start justify-between px-1">
+<span class="bg-emerald-600 text-on-primary font-code-sm text-[10px] px-1 rounded-sm leading-tight">DEVICE #WB-8812</span>
+</div>
+<!-- Box 3: Timestamp -->
+<div class="absolute bottom-[16%] left-[42%] w-[46%] h-[15%] border-2 border-primary bg-primary/20 rounded flex items-start justify-between px-1">
+<span class="bg-primary text-on-primary font-code-sm text-[10px] px-1 rounded-sm leading-tight">2026-02-14 09:41:22 UTC</span>
+</div>
+</div>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between px-2.5 py-1.5 rounded-lg bg-inverse-surface/85 backdrop-blur text-inverse-on-surface">
+<span class="font-label-caps text-label-caps flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span> 3 Bounding Zones Calibrated
+            </span>
+<button class="font-label-caps text-label-caps text-primary-fixed-dim hover:underline font-semibold flex items-center gap-1">
+<span>Raw JSON Coords</span>
+<span class="material-symbols-outlined text-[14px]">code</span>
+</button>
+</div>
+</div>
+<!-- Metadata Properties Grid -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Artifact Metadata</span>
+<div class="grid grid-cols-2 gap-2 text-body-sm">
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-secondary">File Size</span>
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">2.41 MB (PDF/A-3)</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-secondary">Ingestion Engine</span>
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">AWS GovCloud S3-Glacier</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-secondary">Hardware Weighbridge</span>
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">Avery India Tare #WB-8812</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-caption text-caption text-secondary">GPS Station Point</span>
+<span class="font-code-sm text-code-sm font-semibold text-on-surface">28.6310° N, 77.3812° E</span>
+</div>
+</div>
+</div>
+<!-- Cryptographic Proof Anchor Block -->
+<div class="flex flex-col gap-2 pt-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Ledger &amp; Cryptographic Proof</span>
+<span class="font-label-caps text-label-caps text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">ZK-SNARK VERIFIED</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between text-caption font-caption">
+<span class="text-secondary">SHA-256 Digest</span>
+<button class="text-primary hover:underline font-mono text-[11px] flex items-center gap-1">
+<span>Copy</span>
+<span class="material-symbols-outlined text-[13px]">content_copy</span>
+</button>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest font-code-sm text-[11px] text-on-surface break-all select-all font-mono leading-relaxed shadow-inner">
+              0x4fa871e98bb36214df9082ca0e914cb901f4c819d9124403198a2ebf91bce041
+            </div>
+<div class="flex items-center justify-between pt-1 text-body-sm font-body-sm">
+<span class="text-secondary">Merkle Block Height:</span>
+<span class="font-mono font-semibold text-on-surface">#19,842,109</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-secondary">State Root Hash:</span>
+<span class="font-mono text-code-sm text-secondary truncate max-w-[170px]">0x77c2...e810a</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-secondary">Gasless Gas Station:</span>
+<span class="font-semibold text-emerald-700">Polygon zkEVM Validium</span>
+</div>
+</div>
+</div>
+<!-- Associated Case & Action Hub -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-label-caps text-label-caps uppercase text-secondary tracking-wider font-semibold">Associated EPR Investigation</span>
+<div class="p-3 rounded-xl bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">folder_open</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Case EP-2026-00128</span>
+<span class="font-caption text-caption text-secondary">Lithium Battery Recycler Stream Audit</span>
+</div>
+</div>
+<button class="p-1 rounded-lg text-primary hover:bg-surface-container-high transition-colors" title="Open Case Dossier">
+<span class="material-symbols-outlined text-[20px]">arrow_outward</span>
+</button>
+</div>
+</div>
+<!-- Primary Action Suite -->
+<div class="flex flex-col gap-2 pt-2">
+<button class="w-full h-11 px-4 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-all shadow-md flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Download Raw Evidence &amp; Signature</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="h-10 px-2 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container shadow-sm flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">crop_free</span>
+<span>Inspect Bounding</span>
+</button>
+<button class="h-10 px-2 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container shadow-sm flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px] text-emerald-600">verified</span>
+<span>Audit Certificate</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Telemetry Integrity Bar -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">shield_with_heart</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Tamper-Proof Audit Guarantee</span>
+<span class="font-caption text-caption text-secondary">Every evidentiary record uploaded to EPR Proof is permanently hashed, timestamped with UTC atomic clocks, and bound to verifiable cryptographic proofs admissible in national compliance tribunals.</span>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0">
+<span class="font-code-sm text-code-sm text-secondary font-mono">Consensus: Hyperledger Fabric 2.5 LTS</span>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+</div>
+</div></main></div></body></html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed":"#d9e2ff","surface-container-lowest":"#ffffff","on-primary":"#ffffff","primary":"#004ac6","on-error-container":"#93000a","error":"#ba1a1a","error-container":"#ffdad6","on-secondary-fixed":"#081a3c","on-tertiary-container":"#f6edff","primary-fixed-dim":"#b4c5ff","on-background":"#0b1c30","on-error":"#ffffff","outline-variant":"#c3c6d7","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#5516be","on-tertiary-fixed":"#23005c","tertiary-fixed":"#e9ddff","primary-container":"#2563eb","tertiary-fixed-dim":"#d0bcff","tertiary":"#632ecd","on-secondary-container":"#4c5b80","inverse-surface":"#213145","tertiary-container":"#7d4ce7","surface-bright":"#f8f9ff","on-primary-fixed-variant":"#003ea8","on-surface-variant":"#434655","inverse-on-surface":"#eaf1ff","surface-container-low":"#eff4ff","on-secondary-fixed-variant":"#37466a","secondary-fixed-dim":"#b6c6f1","surface":"#f8f9ff","inverse-primary":"#b4c5ff","on-primary-fixed":"#00174b","on-surface":"#0b1c30","surface-tint":"#0053db","surface-variant":"#d3e4fe","secondary-container":"#c4d4ff","outline":"#737686","surface-container-highest":"#d3e4fe","background":"#f8f9ff","on-primary-container":"#eeefff","secondary":"#4f5e83","surface-container-high":"#dce9ff","surface-dim":"#cbdbf5","primary-fixed":"#dbe1ff","on-tertiary":"#ffffff","surface-container":"#e5eeff"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"gutter":"1.5rem","space-md":"1rem","space-xl":"2rem","space-xs":"0.25rem","space-sm":"0.5rem","margin":"2rem","gutter-mobile":"1rem","margin-mobile":"1rem","space-lg":"1.5rem"},"fontFamily":{"headline-xl":["Inter"],"label-md":["Inter"],"display-lg":["Inter"],"body-lg":["Inter"],"label-caps":["Inter"],"headline-lg":["Inter"],"caption":["Inter"],"display-lg-mobile":["Inter"],"body-sm":["Inter"],"body-md":["Inter"],"code-sm":["JetBrains Mono"],"headline-md":["Inter"]},"fontSize":{"headline-xl":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-md":["13px",{"lineHeight":"18px","fontWeight":"500"}],"display-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.025em","fontWeight":"700"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"600"}],"headline-lg":["22px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"caption":["12px",{"lineHeight":"16px","fontWeight":"400"}],"display-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"18px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"code-sm":["12px",{"lineHeight":"16px","fontWeight":"500"}],"headline-md":["18px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}}</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-60 bg-inverse-surface z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 px-space-md flex items-center gap-space-sm bg-inverse-surface"><img alt="Brand logo. - Primary color: #4f8cff
+- Font: inter
+- Mode: dark
+- Roundness: rounded-sm
+" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WHMuXBk_-dt3sQaB2pQg_2mc8fZg2-nWzy3sJaYTe_dBilYx-aDUMBnALl9TEdUlOrEciBR_VnAd_r0PINK7EBIZTq5YrCo44bTT6WwNu6X8N-LXazPo6Q6faVFCpvEvr96irK3d9uvReg-c2ZY4-iFCriTiAlkmUGkkUM30XQOcf69_a5gLSYsETYaC7BdkZb-CWSevrYg_9N09ShEMRxLwyEKOnYckDnDqRDPGRSALhTN1r-0qlC5bU"/><div class="flex flex-col min-w-0 flex-1"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md font-bold text-inverse-on-surface truncate">EPR Proof</span><span class="material-symbols-outlined text-primary-fixed-dim text-[16px]">verified</span></div><span class="font-caption text-caption text-secondary-fixed-dim tracking-wide truncate">Evidence Intelligence</span></div></div><nav class="flex flex-col gap-space-xs px-space-sm mt-space-md" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="dashboard" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-label-md text-label-md">Dashboard</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="verify-claim" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">fact_check</span><span class="font-label-md text-label-md">Verify Claim</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="cases" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">folder_managed</span><span class="font-label-md text-label-md">Cases</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="review-queue" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">rule</span><span class="font-label-md text-label-md">Review Queue</span></div><span class="px-1.5 py-0.5 rounded-full font-label-caps text-label-caps bg-tertiary-container text-on-tertiary-container">24</span></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="evidence-library" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-label-md text-label-md">Evidence Library</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="analytics" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">insights</span><span class="font-label-md text-label-md">Analytics</span></div></a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-secondary-fixed-dim hover:bg-on-background hover:text-inverse-on-surface transition-all group" data-path="settings" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-label-md text-label-md">Settings</span></div></a></nav></div><div class="p-space-sm m-space-sm rounded-xl bg-on-background flex flex-col gap-space-xs"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Wm0hBg52YYTzx-BYr9egznFX1gcWCJkUkxyW-7rE7UCGX5IrU1yOL2YJ7n8NYRKsRL1e32JvWtYOOrdMxWApo47ORPsMdMuyfQedUz9iRz3YAb_VZ72oiDDEQ83nmaAn_w-4pZMA-nX4Dcy20wqUbbCG6K6OGX03yuKoPssSdB7v2AntECRZopUNoyYz7If-wQb_fxi_9SLw3T6-gaXVC9gRzGEFHeT73vhpkcp5hMHijein7kzfdDaRKt"/><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-inverse-on-surface font-semibold truncate">Elena Vance</span><span class="font-caption text-caption text-secondary-fixed-dim truncate">Chief Risk Officer • Demo</span></div></div><div class="flex items-center gap-space-xs pt-space-xs"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-label-caps text-label-caps text-secondary-fixed-dim">Online • Operational</span></div></div></aside><div class="pl-60"><header class="fixed top-0 left-60 right-0 h-16 bg-surface-container-lowest z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex flex-col"><div class="flex items-center gap-space-xs text-on-surface-variant font-caption text-caption"><span>EPR Intel</span><span>/</span><span class="text-primary font-medium">Dashboard</span></div><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Executive Mission Control</span><span class="font-label-caps text-label-caps px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant font-medium">Live Telemetry</span></div></div></div><div class="flex items-center gap-space-sm"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span><input class="h-10 pl-9 pr-4 w-72 lg:w-96 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary" placeholder="Search telemetry, claims, or proof hashes... ⌘K" type="text"/></div><button class="h-10 px-space-sm rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container flex items-center gap-space-xs font-label-md text-label-md transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">tune</span><span class="hidden xl:inline">Filter</span></button><button class="relative p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">help_outline</span></button><div class="flex items-center pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Wm0hBg52YYTzx-BYr9egznFX1gcWCJkUkxyW-7rE7UCGX5IrU1yOL2YJ7n8NYRKsRL1e32JvWtYOOrdMxWApo47ORPsMdMuyfQedUz9iRz3YAb_VZ72oiDDEQ83nmaAn_w-4pZMA-nX4Dcy20wqUbbCG6K6OGX03yuKoPssSdB7v2AntECRZopUNoyYz7If-wQb_fxi_9SLw3T6-gaXVC9gRzGEFHeT73vhpkcp5hMHijein7kzfdDaRKt"/></div></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Command & Status Bar -->
+<div class="px-margin pt-space-lg pb-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs font-caption text-caption text-secondary">
+<span>EPR Intel</span>
+<span class="text-outline-variant">/</span>
+<span>Settings</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-medium">Enterprise Configuration</span>
+</div>
+<div class="flex items-center gap-space-md flex-wrap">
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">System Settings &amp; Forensic Policies</h1>
+<div class="inline-flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-caps text-label-caps shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+            Statutory Rule Engine: Active (CPCB-EPR-2026-V3.4)
+          </div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-lowest text-secondary hover:text-on-surface hover:bg-surface-container-low font-label-md text-label-md shadow-sm transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Policy Revisions</span>
+</button>
+<button class="px-space-md py-2 rounded-lg bg-surface-container-lowest text-secondary hover:text-on-surface hover:bg-surface-container-low font-label-md text-label-md shadow-sm transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Export Schema (JSON)</span>
+</button>
+</div>
+</div>
+<!-- Navigation Pill Tabs -->
+<div class="mt-space-lg bg-surface-container-low p-1 rounded-xl flex items-center gap-1 overflow-x-auto shadow-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-semibold shadow-sm flex items-center gap-space-xs shrink-0 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+<span>Forensic Rules &amp; Thresholds</span>
+</button>
+<button class="px-space-md py-2 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-lowest/60 font-label-md text-label-md shrink-0 transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+<span>Hardware &amp; Weighbridge IoT</span>
+</button>
+<button class="px-space-md py-2 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-lowest/60 font-label-md text-label-md shrink-0 transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">key</span>
+<span>Cryptographic Enclave &amp; Ledger</span>
+</button>
+<button class="px-space-md py-2 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-lowest/60 font-label-md text-label-md shrink-0 transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+<span>Team Clearance &amp; Roles</span>
+</button>
+<button class="px-space-md py-2 rounded-lg text-secondary hover:text-on-surface hover:bg-surface-container-lowest/60 font-label-md text-label-md shrink-0 transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">webhook</span>
+<span>Audit Log &amp; Webhooks</span>
+</button>
+</div>
+</div>
+<!-- Main Settings Workspace -->
+<div class="px-margin pb-24 flex flex-col gap-space-xl">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Core Rules & Hardware -->
+<div class="xl:col-span-8 flex flex-col gap-gutter">
+<!-- Card 1: Automated Discrepancy & Escrow Hold Thresholds -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between pb-space-sm border-b-0">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Automated Discrepancy &amp; Escrow Hold Thresholds</span>
+<span class="font-caption text-caption text-secondary">Defines automated contradiction trigger bounds per Statutory CPCB-EPR Mandate</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary">Real-time Adjudication</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Metric 1: Tare Discrepancy -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Tare Discrepancy</span>
+<span class="material-symbols-outlined text-primary text-[18px]">straighten</span>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface font-bold">5.0%</div>
+<p class="font-caption text-caption text-secondary mt-1">Variances above 5% trigger Tier-2 review. &gt;15% initiates instant Escrow Freeze.</p>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 33%"></div>
+</div>
+</div>
+<!-- Metric 2: Temporal Inversion -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Temporal Sensitivity</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]">timer</span>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface font-bold">Strict</div>
+<p class="font-caption text-caption text-secondary mt-1">&lt; 0 hrs tolerance between source manifest &amp; furnace intake batching.</p>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Metric 3: FastTag Dwell -->
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col justify-between gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-wider">Fleet Geo Deviation</span>
+<span class="material-symbols-outlined text-primary text-[18px]">radar</span>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface font-bold">15 km / 120m</div>
+<p class="font-caption text-caption text-secondary mt-1">Maximum geofence offset corridor. Dwell flag threshold set to 120 mins.</p>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+<!-- Policy Configuration Sliders -->
+<div class="flex flex-col gap-space-md pt-space-xs">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="tare-slider">Weighbridge Tare Discrepancy Limit (%)</label>
+<span class="font-code-sm text-code-sm text-primary font-bold px-2 py-0.5 rounded bg-surface-container" id="tare-val">5.0%</span>
+</div>
+<input class="w-full accent-primary-container cursor-pointer" id="tare-slider" max="25.0" min="1.0" step="0.5" type="range" value="5.0"/>
+<div class="flex justify-between font-caption text-caption text-secondary">
+<span>0.5% (High Precision)</span>
+<span>5.0% (CPCB Baseline)</span>
+<span>25.0% (Permissive)</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="geo-slider">FastTag Transit Dwell Window Tolerance (Minutes)</label>
+<span class="font-code-sm text-code-sm text-primary font-bold px-2 py-0.5 rounded bg-surface-container" id="geo-val">120 min</span>
+</div>
+<input class="w-full accent-primary-container cursor-pointer" id="geo-slider" max="360" min="30" step="15" type="range" value="120"/>
+<div class="flex justify-between font-caption text-caption text-secondary">
+<span>30 min (Express Inter-city)</span>
+<span>120 min (Standard National Highway)</span>
+<span>360 min (Congested Zone)</span>
+</div>
+</div>
+</div>
+<!-- Policy Rule Toggles -->
+<div class="flex flex-col gap-space-sm pt-space-sm">
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px] mt-0.5">lock_clock</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Enforce Automatic Credit Escrow Freeze upon Critical Mass Balance Failure</span>
+<span class="font-caption text-caption text-secondary">Instantly halts EPR certificate minting &amp; liquidation when aggregate output exceeds theoretical plant capacity by &gt;8%.</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-outline-variant after:border-0 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px] mt-0.5">supervisor_account</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Require Dual-Officer Sign-Off for Overriding Contradiction Flags</span>
+<span class="font-caption text-caption text-secondary">Requires cryptographic co-signing from both the Lead Compliance Officer and the designated CPCB Observer.</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-outline-variant after:border-0 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Card 2: Hardware & Telemetry Data Connectors -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">router</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Hardware &amp; Telemetry Data Connectors</span>
+<span class="font-caption text-caption text-secondary">Verified physical weighbridges, satellite passes, and highway toll tolling telemetry</span>
+</div>
+</div>
+<button class="px-space-sm py-2 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-medium shadow-sm hover:bg-primary transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">add_link</span>
+<span>Add New Scale Terminal</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Hardware Item 1 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col lg:flex-row lg:items-center justify-between gap-space-md transition-all hover:bg-surface-container">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">balance</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-body-lg font-bold text-on-surface">Avery India Weighbridge IoT Bridge</span>
+<span class="px-2 py-0.5 rounded-full font-label-caps text-label-caps bg-surface-container-lowest text-primary font-bold">WB-NODE-7789</span>
+</div>
+<span class="font-caption text-caption text-secondary">Site: Hazira Recycled Polyolefins Hub • Port 8883 MQTT / TLS 1.3 Strict</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg justify-between lg:justify-end">
+<div class="flex flex-col text-right">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">42ms Latency</span>
+<span class="font-caption text-caption text-secondary">Heartbeat OK • 99.98% SLA</span>
+</div>
+<div class="flex items-center gap-space-xs px-2.5 py-1 rounded bg-surface-container-lowest text-primary font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                  Connected
+                </div>
+<button class="p-2 rounded-lg hover:bg-surface-container-lowest text-secondary hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Hardware Item 2 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col lg:flex-row lg:items-center justify-between gap-space-md transition-all hover:bg-surface-container">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-body-lg font-bold text-on-surface">NPCI FastTag Commercial Fleet Gateway</span>
+<span class="px-2 py-0.5 rounded-full font-label-caps text-label-caps bg-surface-container-lowest text-primary font-bold">FASTAG-PROD-V4</span>
+</div>
+<span class="font-caption text-caption text-secondary">National Electronic Toll Collection (NETC) Pipeline • 14 Active Tolling Corridors</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg justify-between lg:justify-end">
+<div class="flex flex-col text-right">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">1,240 Events/hr</span>
+<span class="font-caption text-caption text-secondary">Direct webhook sync</span>
+</div>
+<div class="flex items-center gap-space-xs px-2.5 py-1 rounded bg-surface-container-lowest text-primary font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                  Active Sync
+                </div>
+<button class="p-2 rounded-lg hover:bg-surface-container-lowest text-secondary hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Hardware Item 3 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col lg:flex-row lg:items-center justify-between gap-space-md transition-all hover:bg-surface-container">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center text-tertiary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">satellite_alt</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-body-lg font-bold text-on-surface">Copernicus Sentinel-2 Satellite Optical Feeds</span>
+<span class="px-2 py-0.5 rounded-full font-label-caps text-label-caps bg-surface-container-lowest text-tertiary font-bold">ESA-MSI-L2A</span>
+</div>
+<span class="font-caption text-caption text-secondary">Spectral yard inventory verification • Thermal anomaly validation stream</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg justify-between lg:justify-end">
+<div class="flex flex-col text-right">
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">Next: 14:00 UTC</span>
+<span class="font-caption text-caption text-secondary">10m Ground Resolution</span>
+</div>
+<div class="flex items-center gap-space-xs px-2.5 py-1 rounded bg-surface-container-lowest text-tertiary font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+                  Synchronized
+                </div>
+<button class="p-2 rounded-lg hover:bg-surface-container-lowest text-secondary hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Ledger Architecture & Auditor Roles -->
+<div class="xl:col-span-4 flex flex-col gap-gutter">
+<!-- Card 3: Cryptographic Enclave & Ledger Anchoring -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">enhanced_encryption</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Cryptographic Enclave</span>
+<span class="font-caption text-caption text-secondary">Zero-Knowledge Ledger Proofs</span>
+</div>
+</div>
+<span class="p-1 rounded text-primary hover:bg-surface-container-low transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Ledger Fabric Node</span>
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface font-semibold">AWS GovCloud (Gov-AP-South-1)</span>
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-surface-container-lowest text-primary">Air-Gapped</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Anchor Contract Smart Address</span>
+<div class="flex items-center justify-between bg-surface-container-lowest px-2 py-1.5 rounded">
+<span class="font-code-sm text-code-sm text-on-surface truncate">0x89e1a98cc7b6e921d...31ff5b2a09c2e</span>
+<button class="text-secondary hover:text-primary transition-colors ml-2 shrink-0" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Consensus</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Raft v3.2 BFT</span>
+<span class="font-caption text-caption text-primary">4 Validating Nodes</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-0.5">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Key Rotation</span>
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">90-Day Policy</span>
+<span class="font-caption text-caption text-secondary">In 24 days</span>
+</div>
+</div>
+<!-- Cryptographic Verification Diagram Inline -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-caption font-caption text-secondary">
+<span>Zero-Knowledge Proof Anchor Ratio</span>
+<span class="font-code-sm text-code-sm text-on-surface font-semibold">100.0% Immutable</span>
+</div>
+<svg class="w-full h-8" fill="none" viewbox="0 0 300 24">
+<rect class="text-surface-container-highest" fill="currentColor" height="8" rx="4" width="300" x="0" y="8"></rect>
+<rect class="text-primary-container" fill="currentColor" height="8" rx="4" width="288" x="0" y="8"></rect>
+<circle class="text-surface-container-lowest" cx="288" cy="12" fill="currentColor" r="5"></circle>
+<circle class="text-primary" cx="288" cy="12" fill="currentColor" r="3"></circle>
+</svg>
+<span class="font-caption text-caption text-secondary">Hash chain continuous validation verified across 18,940 transactions.</span>
+</div>
+</div>
+<button class="w-full py-2 px-space-md rounded-lg bg-surface-container-lowest text-primary hover:bg-surface-container font-label-md text-label-md font-semibold shadow-sm transition-all flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">vpn_key</span>
+<span>Force HSM Key Reseed</span>
+</button>
+</section>
+<!-- Card 4: Auditor Access & Role-Based Clearance -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">admin_panel_settings</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface font-semibold">Governance Access</span>
+<span class="font-caption text-caption text-secondary">Adjudication Clearance</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-caps text-label-caps text-on-secondary-container">Level 4 Max</span>
+</div>
+<!-- Active Primary Officer -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center gap-space-sm">
+<img class="w-12 h-12 rounded-lg object-cover shadow-sm shrink-0" data-alt="Professional corporate headshot of lead regulatory compliance officer Elena Vance wearing dark modern blazer against subtle studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6HwoarVqigBB04J7XTcesWUZ2EmSQH7OeqSqpDY3-6X2SUrCQtpLLfnLCQg3f9ErRCCD7WHTduTFbgNPuOVTTWSw3rI_rSr_1nCi_6iu5H6oUtXnwISyUU1kOpEG2QF636LJIndFZ-0SHtQtyJqRkU68eqo6W-s3ndyaNoY4wWaVwhlBHJ5bh1hvmeza9IF_GsYTN0UIQ2wkVj7E8mW0I6hS4H7Cv_ayL-q-F1xMAujkf2dAnMvgZ_Q"/>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-md text-body-md font-bold text-on-surface truncate">Elena Vance</span>
+<span class="material-symbols-outlined text-primary text-[16px]">verified</span>
+</div>
+<span class="font-caption text-caption text-secondary truncate">Lead Risk Officer • Master Signer</span>
+<span class="font-label-caps text-label-caps text-primary mt-0.5">Clearance: Full Escrow Freeze</span>
+</div>
+</div>
+<!-- Team Seats Capacity -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-display-lg text-headline-xl text-on-surface font-bold">8</span>
+<span class="font-caption text-caption text-secondary">Active Compliance Officers</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col">
+<span class="font-display-lg text-headline-xl text-primary font-bold">3</span>
+<span class="font-caption text-caption text-secondary">CPCB Regulatory Observers</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Session IP Pinning &amp; FIDO2</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-primary font-label-caps text-label-caps">Enforced</span>
+</div>
+<button class="w-full py-2 px-space-md rounded-lg bg-surface-container-lowest text-secondary hover:text-on-surface hover:bg-surface-container font-label-md text-label-md shadow-sm transition-all flex items-center justify-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">group_add</span>
+<span>Manage Regulatory Delegation</span>
+</button>
+</section>
+</div>
+</div>
+</div>
+<!-- Bottom Floating Notification / Save Bar -->
+<div class="fixed bottom-0 left-60 right-0 z-30 p-space-md bg-surface-container-lowest shadow-[0_-4px_20px_rgba(0,0,0,0.06)] flex items-center justify-between">
+<div class="flex items-center gap-space-md pl-margin">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Unsaved Statutory Parameters Detected</span>
+<span class="font-caption text-caption text-secondary">Modifications to the Tare Discrepancy &amp; Dwell Thresholds will trigger ledger schema re-anchoring.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm pr-margin">
+<button class="px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-secondary hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-all" type="button">
+        Discard Changes
+      </button>
+<button class="px-space-lg py-2.5 rounded-lg bg-primary-container text-on-primary hover:bg-primary font-label-md text-label-md font-semibold shadow-md transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Save Forensic Policies</span>
+</button>
+</div>
+</div>
+<script>
+    const tareSlider = document.getElementById('tare-slider');
+    const tareVal = document.getElementById('tare-val');
+    if (tareSlider && tareVal) {
+      tareSlider.addEventListener('input', (e) => {
+        tareVal.textContent = parseFloat(e.target.value).toFixed(1) + '%';
+      });
+    }
+
+    const geoSlider = document.getElementById('geo-slider');
+    const geoVal = document.getElementById('geo-val');
+    if (geoSlider && geoVal) {
+      geoSlider.addEventListener('input', (e) => {
+        geoVal.textContent = e.target.value + ' min';
+      });
+    }
+  </script>
+</div></main></div></body></html>

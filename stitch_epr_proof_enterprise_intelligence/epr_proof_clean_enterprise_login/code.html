@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_blank" name="shell-type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#f8f9ff",
+            "background": "#f8f9ff",
+            "on-surface": "#0b1c30",
+            "on-surface-variant": "#434655",
+            "primary": "#004ac6",
+            "primary-container": "#2563eb",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#eeefff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "surface-container-high": "#dce9ff",
+            "outline": "#737686",
+            "outline-variant": "#c3c6d7",
+            "secondary": "#4f5e83",
+            "secondary-container": "#c4d4ff"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#f8f9ff] font-sans text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-blue-100 selection:text-blue-900">
+<!-- Subtle Top Banner Accent -->
+<header class="w-full border-b border-slate-200/80 bg-white/70 backdrop-blur-md px-6 py-3.5 sticky top-0 z-20">
+<div class="max-w-6xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center shadow-sm shadow-blue-500/20">
+<span class="material-symbols-outlined text-[19px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-bold text-[15px] tracking-tight text-slate-900">EPR Proof</span>
+<span class="font-mono text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200/60">GovCloud</span>
+</div>
+<span class="text-[11px] text-slate-500 leading-none">Enterprise Evidence Intelligence</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-xs text-slate-600">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          CPCB Core Operational
+        </span>
+</div>
+</div>
+</header>
+<!-- Main Centered Authentication Area -->
+<main class="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+<div class="w-full max-w-[480px]">
+<!-- Main Login Card -->
+<div class="bg-white rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-200/80 p-7 sm:p-9 relative">
+<!-- Header Text -->
+<div class="text-center mb-6">
+<div class="w-12 h-12 mx-auto rounded-xl bg-gradient-to-tr from-blue-700 to-blue-500 text-white flex items-center justify-center shadow-md shadow-blue-500/25 mb-4">
+<span class="material-symbols-outlined text-[26px]">shield_lock</span>
+</div>
+<h1 class="text-2xl font-bold tracking-tight text-slate-900">Sign in to EPR Proof</h1>
+<p class="text-[13px] text-slate-500 mt-1 leading-relaxed">
+            Access the statutory e-waste forensic verification platform
+          </p>
+</div>
+<!-- Dedicated Demo Credentials Hero Card -->
+<div class="mb-6 rounded-xl border border-blue-200 bg-gradient-to-b from-blue-50/90 to-blue-50/40 p-4 relative overflow-hidden transition-all duration-200 hover:border-blue-300">
+<div class="flex items-center justify-between gap-2 mb-2.5">
+<span class="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-blue-800 bg-white px-2 py-0.5 rounded-md border border-blue-200 shadow-2xs">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+              Demo Access Enabled
+            </span>
+<span class="font-mono text-[11px] text-blue-700 font-medium bg-blue-100/70 px-2 py-0.5 rounded">Clearance Level 4</span>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-semibold shrink-0 shadow-xs">
+              EV
+            </div>
+<div class="min-w-0">
+<div class="text-[13px] font-semibold text-slate-900 truncate">Elena Vance</div>
+<div class="text-[11px] text-slate-500 truncate">Chief Risk Officer &amp; Lead Forensic Auditor</div>
+</div>
+</div>
+<!-- Single-click Instant Sign-in Button -->
+<button class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-[13px] py-2.5 px-3.5 rounded-lg shadow-sm shadow-blue-600/25 flex items-center justify-center gap-2 transition-all duration-150 group cursor-pointer" id="demo-signin-btn" onclick="triggerDemoSignIn()" type="button">
+<span class="material-symbols-outlined text-[17px] text-amber-300 group-hover:scale-110 transition-transform">bolt</span>
+<span id="demo-btn-label">⚡ One-Click Sign In (Instant Demo)</span>
+</button>
+<p class="text-[11px] text-slate-500 text-center mt-2 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-emerald-600">check_circle</span>
+            Pre-filled with auditor clearance Level 4
+          </p>
+</div>
+<!-- Subtle Divider -->
+<div class="relative flex items-center justify-center mb-6">
+<div class="w-full border-t border-slate-200"></div>
+<span class="bg-white px-3 text-[12px] font-medium text-slate-400 absolute uppercase tracking-wider">or sign in with credentials</span>
+</div>
+<!-- Authentication Form -->
+<form class="space-y-4" id="login-form" onsubmit="event.preventDefault(); simulateSubmit();">
+<!-- Work Email Input -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="block text-[13px] font-semibold text-slate-700" for="work-email">Work Email</label>
+<span class="inline-flex items-center gap-1 text-[11px] text-blue-600 font-medium">
+<span class="material-symbols-outlined text-[13px]">domain_verification</span> CPCB SSO Verified
+              </span>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-slate-400 pointer-events-none">mail</span>
+<input class="w-full pl-9 pr-10 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-colors" id="work-email" placeholder="name@enterprise.com" required="" type="email" value="demo@eprproof.com"/>
+<span class="material-symbols-outlined absolute right-3 text-[18px] text-emerald-600" title="Identity Verified">verified</span>
+</div>
+</div>
+<!-- Password / Enclave Key Input -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<label class="block text-[13px] font-semibold text-slate-700" for="password-input">Password / Enclave Key</label>
+<a class="text-[12px] font-medium text-blue-600 hover:text-blue-700 hover:underline" href="#reset">Forgot password?</a>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-slate-400 pointer-events-none">lock</span>
+<input class="w-full pl-9 pr-10 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 tracking-wider transition-colors font-mono" id="password-input" placeholder="••••••••••••" required="" type="password" value="EPRProof•2026•MasterSecureKey"/>
+<button aria-label="Toggle password visibility" class="absolute right-3 text-slate-400 hover:text-slate-600 transition-colors p-1" id="eye-toggle" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Persistence Checkbox & SAML 2.0 -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer" type="checkbox"/>
+<span class="text-[13px] text-slate-600">Keep me signed in for 30 days</span>
+</label>
+<a class="text-[12px] font-medium text-slate-500 hover:text-blue-600 transition-colors" href="#sso">
+              SSO / SAML 2.0
+            </a>
+</div>
+<!-- Primary Submit Button -->
+<div class="pt-2">
+<button class="w-full bg-[#2563eb] hover:bg-blue-700 active:bg-blue-800 text-white font-medium text-sm py-2.5 px-4 rounded-lg shadow-sm shadow-blue-500/20 flex items-center justify-center gap-2 transition-all duration-150 cursor-pointer" id="submit-btn" type="submit">
+<span id="submit-text">Sign In to Workspace</span>
+<span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Passkey / WebAuthn Alternative -->
+<div class="mt-5 pt-5 border-t border-slate-100 flex items-center justify-center">
+<button class="text-slate-600 hover:text-slate-900 text-xs font-medium flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-blue-600">fingerprint</span>
+            Sign in with FIDO2 / Hardware Security Key
+          </button>
+</div>
+</div>
+<!-- Trust Assurance Badges Under Card -->
+<div class="mt-6 flex items-center justify-center gap-4 sm:gap-6 text-xs text-slate-500 font-medium flex-wrap">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">verified</span>
+<span>SOC 2 Type II Certified</span>
+</div>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-emerald-600">eco</span>
+<span>ISO 14001 Audited</span>
+</div>
+<span class="text-slate-300">•</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-blue-600">policy</span>
+<span>CPCB Statutory Spec 2026</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Clean Corporate Footer -->
+<footer class="w-full border-t border-slate-200/80 bg-white/60 py-4 px-6 text-xs text-slate-500">
+<div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+<div class="flex items-center gap-2">
+<span>© 2026 EPR Proof Technologies Ltd. All rights reserved.</span>
+</div>
+<div class="flex items-center gap-4 text-slate-600 font-medium">
+<a class="hover:text-blue-600 transition-colors" href="#privacy">Privacy Policy</a>
+<span>•</span>
+<a class="hover:text-blue-600 transition-colors" href="#security">Security Architecture</a>
+<span>•</span>
+<a class="hover:text-blue-600 transition-colors" href="#support">Contact Compliance Support</a>
+</div>
+</div>
+</footer>
+<script>
+    function triggerDemoSignIn() {
+      const emailField = document.getElementById('work-email');
+      const passField = document.getElementById('password-input');
+      const demoBtn = document.getElementById('demo-signin-btn');
+      const demoLabel = document.getElementById('demo-btn-label');
+      const submitText = document.getElementById('submit-text');
+
+      emailField.value = 'elena.vance@eprproof.gov.in';
+      passField.value = 'EPRProof•2026•MasterSecureKey';
+
+      demoLabel.innerText = 'Verifying Level 4 Enclave Key...';
+      demoBtn.classList.add('opacity-90', 'cursor-wait');
+
+      setTimeout(() => {
+        demoLabel.innerText = 'Redirecting to Adjudication Queue...';
+        demoBtn.classList.remove('bg-blue-600');
+        demoBtn.classList.add('bg-emerald-600');
+        submitText.innerText = 'Authenticated ✓';
+        setTimeout(() => {
+          demoLabel.innerText = 'Session Initialized ✓';
+        }, 600);
+      }, 700);
+    }
+
+    function simulateSubmit() {
+      const submitText = document.getElementById('submit-text');
+      submitText.innerText = 'Authenticating...';
+      setTimeout(() => {
+        submitText.innerText = 'Redirecting...';
+      }, 600);
+    }
+
+    function togglePassword() {
+      const passField = document.getElementById('password-input');
+      const eyeIcon = document.querySelector('#eye-toggle span');
+      if (passField.type === 'password') {
+        passField.type = 'text';
+        eyeIcon.innerText = 'visibility_off';
+      } else {
+        passField.type = 'password';
+        eyeIcon.innerText = 'visibility';
+      }
+    }
+  </script>
+</body></html>
