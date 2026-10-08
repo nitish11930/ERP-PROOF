@@ -137,7 +137,7 @@ export default function AuditPage() {
         }}>
           <Clock size={14} style={{ color: 'var(--color-blue-500)', flexShrink: 0 }} />
           <span>
-            <strong>Audit trail is immutable.</strong> All entries are cryptographically signed and stored in AWS DynamoDB with point-in-time recovery enabled. Entries cannot be modified or deleted.
+            <strong>Audit trail is immutable.</strong> All entries are stored in AWS DynamoDB with point-in-time recovery enabled. Entries cannot be modified or deleted.
           </span>
         </div>
       </main>

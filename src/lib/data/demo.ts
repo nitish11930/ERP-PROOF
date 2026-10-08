@@ -9,7 +9,7 @@ import type {
 export const DEMO_PRODUCERS: Producer[] = [
   {
     producerId: 'P001',
-    name: 'GreenTech Electronics Pvt Ltd',
+    name: 'ABC Recycling Pvt. Ltd.',
     category: 'Electronics',
     registrationNumber: 'EPR-MH-2024-001',
     contactEmail: 'compliance@greentechelectronics.com',
@@ -82,17 +82,17 @@ const makeAuditLog = (caseId: string): AuditEntry[] => [
 const EVIDENCE_001: Evidence[] = [
   {
     evidenceId: 'EV-001-A',
-    caseId: 'CASE-001',
+    caseId: 'EP-2026-00128',
     type: 'invoice',
     fileName: 'recycler_invoice_sept2024.pdf',
-    s3Key: 'cases/CASE-001/invoice_sept2024.pdf',
+    s3Key: 'cases/EP-2026-00128/invoice_sept2024.pdf',
     extractedData: {
-      quantity: 12500,
+      quantity: 2400,
       unit: 'kg',
       date: '2024-09-15',
       location: 'Mumbai, MH',
       recyclerName: 'Eco Recycle Hub',
-      aiSummary: 'Invoice for 12,500 kg e-waste collection from GreenTech Electronics.',
+      aiSummary: 'Invoice for 2,550 kg e-waste collection from GreenTech Electronics.',
     },
     contradictions: [],
     confidenceScore: 0.94,
@@ -102,26 +102,26 @@ const EVIDENCE_001: Evidence[] = [
   },
   {
     evidenceId: 'EV-001-B',
-    caseId: 'CASE-001',
+    caseId: 'EP-2026-00128',
     type: 'certificate',
     fileName: 'recycling_certificate_Q2.pdf',
-    s3Key: 'cases/CASE-001/cert_Q2.pdf',
+    s3Key: 'cases/EP-2026-00128/cert_Q2.pdf',
     extractedData: {
-      quantity: 12100,
+      quantity: 1850,
       unit: 'kg',
       date: '2024-10-01',
       location: 'Navi Mumbai, MH',
       certificateNumber: 'CPCB-RC-2024-00872',
-      aiSummary: 'CPCB-approved recycling certificate for 12,100 kg. Note: 400 kg discrepancy with invoice.',
+      aiSummary: 'CPCB-approved recycling certificate for 1,850 kg. Note: 550 kg discrepancy with invoice.',
     },
     contradictions: [
       {
         contradictionId: 'CON-001-1',
         field: 'quantity',
-        expectedValue: '12500 kg',
-        foundValue: '12100 kg',
+        expectedValue: '2550 kg',
+        foundValue: '1850 kg',
         severity: 'medium',
-        description: 'Certificate quantity (12,100 kg) is 3.2% less than invoice quantity (12,500 kg).',
+        description: 'Certificate quantity (1,850 kg) is 22.9% less than invoice quantity (2,550 kg).',
       },
     ],
     confidenceScore: 0.89,
@@ -131,16 +131,16 @@ const EVIDENCE_001: Evidence[] = [
   },
   {
     evidenceId: 'EV-001-C',
-    caseId: 'CASE-001',
+    caseId: 'EP-2026-00128',
     type: 'manifest',
     fileName: 'transport_manifest.pdf',
-    s3Key: 'cases/CASE-001/manifest.pdf',
+    s3Key: 'cases/EP-2026-00128/manifest.pdf',
     extractedData: {
-      quantity: 12500,
+      quantity: 2400,
       unit: 'kg',
       date: '2024-09-14',
       location: 'Thane, MH → Mumbai, MH',
-      aiSummary: 'Transport manifest confirming 12,500 kg pickup from Thane facility.',
+      aiSummary: 'Transport manifest confirming 2,550 kg pickup from Thane facility.',
     },
     contradictions: [],
     confidenceScore: 0.97,
@@ -153,14 +153,14 @@ const EVIDENCE_001: Evidence[] = [
 const FINDINGS_001: Finding[] = [
   {
     findingId: 'F-001-1',
-    caseId: 'CASE-001',
+    caseId: 'EP-2026-00128',
     type: 'quantity_mismatch',
     severity: 'medium',
     title: 'Certificate–Invoice Quantity Gap',
-    description: 'Recycling certificate shows 400 kg less than the collection invoice.',
+    description: 'Recycling certificate shows 550 kg less than the collection invoice.',
     affectedEvidenceIds: ['EV-001-A', 'EV-001-B'],
     aiReasoning:
-      'Invoice claims 12,500 kg but the CPCB certificate reflects 12,100 kg. This 3.2% discrepancy may indicate weighing error, transit loss, or document inconsistency. Requires clarification from recycler.',
+      'Invoice claims 2,550 kg but the CPCB certificate reflects 1,850 kg. This 22.9% discrepancy may indicate weighing error, transit loss, or document inconsistency. Requires clarification from recycler.',
     riskPoints: 20,
     detectedAt: '2024-09-01T10:06:00Z',
   },
@@ -169,26 +169,26 @@ const FINDINGS_001: Finding[] = [
 export const DEMO_CASES: Case[] = [
   // ─── CASE 001: Medium Risk ───────────────────
   {
-    caseId: 'CASE-001',
+    caseId: 'EP-2026-00128',
     producer: DEMO_PRODUCERS[0],
     submittedAt: '2024-09-01T10:00:00Z',
     status: 'in_review',
-    claimedQuantityKg: 12500,
-    verifiedQuantityKg: 12100,
-    riskScore: 42,
-    riskLevel: 'medium',
+    claimedQuantityKg: 2400,
+    verifiedQuantityKg: 1850,
+    riskScore: 78,
+    riskLevel: 'high',
     evidenceIds: ['EV-001-A', 'EV-001-B', 'EV-001-C'],
     evidence: EVIDENCE_001,
     findings: FINDINGS_001,
     reviewDecision: null,
-    auditLog: makeAuditLog('CASE-001'),
+    auditLog: makeAuditLog('EP-2026-00128'),
     financialYear: '2024-25',
     materialCategory: 'ITEW (Information Technology Equipment)',
     targetQuantityKg: 15000,
   },
   // ─── CASE 002: High Risk ─────────────────────
   {
-    caseId: 'CASE-002',
+    caseId: 'EP-2026-00122',
     producer: DEMO_PRODUCERS[1],
     submittedAt: '2024-08-15T08:30:00Z',
     status: 'pending',
@@ -200,10 +200,10 @@ export const DEMO_CASES: Case[] = [
     evidence: [
       {
         evidenceId: 'EV-002-A',
-        caseId: 'CASE-002',
+        caseId: 'EP-2026-00122',
         type: 'invoice',
         fileName: 'battery_collection_aug.pdf',
-        s3Key: 'cases/CASE-002/invoice.pdf',
+        s3Key: 'cases/EP-2026-00122/invoice.pdf',
         extractedData: {
           quantity: 8000,
           unit: 'kg',
@@ -220,10 +220,10 @@ export const DEMO_CASES: Case[] = [
       },
       {
         evidenceId: 'EV-002-B',
-        caseId: 'CASE-002',
+        caseId: 'EP-2026-00122',
         type: 'certificate',
         fileName: 'battery_recycle_cert.pdf',
-        s3Key: 'cases/CASE-002/cert.pdf',
+        s3Key: 'cases/EP-2026-00122/cert.pdf',
         extractedData: {
           quantity: 5200,
           unit: 'kg',
@@ -259,20 +259,20 @@ export const DEMO_CASES: Case[] = [
     findings: [
       {
         findingId: 'F-002-1',
-        caseId: 'CASE-002',
+        caseId: 'EP-2026-00122',
         type: 'quantity_mismatch',
         severity: 'high',
         title: 'Large Quantity Discrepancy (35%)',
         description: 'Certificate shows 2,800 kg fewer than claimed. Exceeds 20% threshold.',
         affectedEvidenceIds: ['EV-002-A', 'EV-002-B'],
         aiReasoning:
-          'A 35% gap between claimed and certified quantity is anomalous. Possible causes: inflated invoice, partial recycling, or fraudulent certificate.',
+          'A 35% gap between claimed and certified quantity is anomalous. Indicates a significant evidence conflict requiring manual review.',
         riskPoints: 30,
         detectedAt: '2024-08-15T09:00:00Z',
       },
       {
         findingId: 'F-002-2',
-        caseId: 'CASE-002',
+        caseId: 'EP-2026-00122',
         type: 'location_mismatch',
         severity: 'high',
         title: 'Cross-State Location Mismatch',
@@ -285,7 +285,7 @@ export const DEMO_CASES: Case[] = [
       },
       {
         findingId: 'F-002-3',
-        caseId: 'CASE-002',
+        caseId: 'EP-2026-00122',
         type: 'low_confidence',
         severity: 'medium',
         title: 'Low AI Extraction Confidence',
@@ -297,14 +297,14 @@ export const DEMO_CASES: Case[] = [
       },
     ],
     reviewDecision: null,
-    auditLog: makeAuditLog('CASE-002'),
+    auditLog: makeAuditLog('EP-2026-00122'),
     financialYear: '2024-25',
     materialCategory: 'Batteries (Lead-Acid & Li-Ion)',
     targetQuantityKg: 10000,
   },
   // ─── CASE 003: Low Risk — Approved ──────────
   {
-    caseId: 'CASE-003',
+    caseId: 'EP-2026-00123',
     producer: DEMO_PRODUCERS[2],
     submittedAt: '2024-07-20T14:00:00Z',
     status: 'approved',
@@ -316,10 +316,10 @@ export const DEMO_CASES: Case[] = [
     evidence: [
       {
         evidenceId: 'EV-003-A',
-        caseId: 'CASE-003',
+        caseId: 'EP-2026-00123',
         type: 'certificate',
         fileName: 'solar_panel_cert.pdf',
-        s3Key: 'cases/CASE-003/cert.pdf',
+        s3Key: 'cases/EP-2026-00123/cert.pdf',
         extractedData: {
           quantity: 21800,
           unit: 'kg',
@@ -344,10 +344,10 @@ export const DEMO_CASES: Case[] = [
       reviewedAt: '2024-07-25T11:00:00Z',
     },
     auditLog: [
-      ...makeAuditLog('CASE-003'),
+      ...makeAuditLog('EP-2026-00123'),
       {
-        entryId: 'AUD-CASE-003-004',
-        caseId: 'CASE-003',
+        entryId: 'AUD-EP-2026-00123-004',
+        caseId: 'EP-2026-00123',
         action: 'Approved by Reviewer',
         actor: 'Priya Sharma',
         actorRole: 'reviewer',
@@ -361,7 +361,7 @@ export const DEMO_CASES: Case[] = [
   },
   // ─── CASE 004: Critical Risk ─────────────────
   {
-    caseId: 'CASE-004',
+    caseId: 'EP-2026-00124',
     producer: DEMO_PRODUCERS[3],
     submittedAt: '2024-10-01T09:00:00Z',
     status: 'escalated',
@@ -373,10 +373,10 @@ export const DEMO_CASES: Case[] = [
     evidence: [
       {
         evidenceId: 'EV-004-A',
-        caseId: 'CASE-004',
+        caseId: 'EP-2026-00124',
         type: 'invoice',
         fileName: 'lamp_collection_oct.pdf',
-        s3Key: 'cases/CASE-004/invoice.pdf',
+        s3Key: 'cases/EP-2026-00124/invoice.pdf',
         extractedData: {
           quantity: 5500,
           unit: 'kg',
@@ -395,7 +395,7 @@ export const DEMO_CASES: Case[] = [
     findings: [
       {
         findingId: 'F-004-1',
-        caseId: 'CASE-004',
+        caseId: 'EP-2026-00124',
         type: 'missing_certificate',
         severity: 'critical',
         title: 'Mandatory Recycling Certificate Missing',
@@ -408,7 +408,7 @@ export const DEMO_CASES: Case[] = [
       },
       {
         findingId: 'F-004-2',
-        caseId: 'CASE-004',
+        caseId: 'EP-2026-00124',
         type: 'low_confidence',
         severity: 'high',
         title: 'Very Low Document Confidence (0.55)',
@@ -422,10 +422,10 @@ export const DEMO_CASES: Case[] = [
     ],
     reviewDecision: null,
     auditLog: [
-      ...makeAuditLog('CASE-004'),
+      ...makeAuditLog('EP-2026-00124'),
       {
-        entryId: 'AUD-CASE-004-004',
-        caseId: 'CASE-004',
+        entryId: 'AUD-EP-2026-00124-004',
+        caseId: 'EP-2026-00124',
         action: 'Escalated for Senior Review',
         actor: 'Risk Engine',
         actorRole: 'system',
@@ -439,7 +439,7 @@ export const DEMO_CASES: Case[] = [
   },
   // ─── CASE 005: Rejected ───────────────────────
   {
-    caseId: 'CASE-005',
+    caseId: 'EP-2026-00125',
     producer: DEMO_PRODUCERS[4],
     submittedAt: '2024-06-10T11:00:00Z',
     status: 'rejected',
@@ -452,7 +452,7 @@ export const DEMO_CASES: Case[] = [
     findings: [
       {
         findingId: 'F-005-1',
-        caseId: 'CASE-005',
+        caseId: 'EP-2026-00125',
         type: 'date_inconsistency',
         severity: 'high',
         title: 'Date Sequence Violation',
@@ -469,17 +469,17 @@ export const DEMO_CASES: Case[] = [
       reviewerName: 'Arjun Mehta',
       decision: 'rejected',
       comments:
-        'Certificate pre-dates collection invoice. This is logically impossible and indicates document fraud. Case rejected. Referred to enforcement.',
+        'Certificate pre-dates collection invoice. This is logically impossible and indicates a severe date inconsistency. Case rejected. Needs further investigation.',
       reviewedAt: '2024-06-15T14:00:00Z',
     },
-    auditLog: makeAuditLog('CASE-005'),
+    auditLog: makeAuditLog('EP-2026-00125'),
     financialYear: '2024-25',
     materialCategory: 'Telecom Equipment',
     targetQuantityKg: 4000,
   },
   // ─── CASE 006: Pending ───────────────────────
   {
-    caseId: 'CASE-006',
+    caseId: 'EP-2026-00126',
     producer: DEMO_PRODUCERS[0],
     submittedAt: '2024-10-04T07:00:00Z',
     status: 'pending',
@@ -491,7 +491,7 @@ export const DEMO_CASES: Case[] = [
     evidence: [],
     findings: [],
     reviewDecision: null,
-    auditLog: makeAuditLog('CASE-006'),
+    auditLog: makeAuditLog('EP-2026-00126'),
     financialYear: '2024-25',
     materialCategory: 'ITEW (Information Technology Equipment)',
     targetQuantityKg: 15000,
@@ -506,7 +506,7 @@ export const DEMO_KPI: KPIData = {
   rejectedThisMonth: 4,
   avgRiskScore: 41.2,
   totalQuantityVerifiedKg: 1845200,
-  complianceRate: 71.4,
+  verificationRate: 71.4,
 };
 
 // ─── Risk Distribution ────────────────────────

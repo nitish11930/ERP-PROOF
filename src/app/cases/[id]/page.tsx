@@ -40,7 +40,7 @@ export default function CaseDetailPage() {
           <div className="empty-state">
             <div className="empty-state-icon"><Shield size={28} /></div>
             <div className="empty-state-title">Case not found</div>
-            <div className="empty-state-desc">The case ID "{caseId}" does not exist.</div>
+            <div className="empty-state-desc">The case ID &quot;{caseId}&quot; does not exist.</div>
             <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={() => router.push('/cases')}>
               Back to Cases
             </button>

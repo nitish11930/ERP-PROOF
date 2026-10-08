@@ -20,6 +20,7 @@ const NAV_SECTIONS = [
     label: 'Overview',
     items: [
       { href: '/', label: 'Dashboard', icon: LayoutDashboard },
+      { href: '/verify', label: 'Verify New Claim', icon: Leaf },
     ],
   },
   {

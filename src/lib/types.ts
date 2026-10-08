@@ -36,6 +36,28 @@ export interface Evidence {
   mimeType: string;
 }
 
+export interface ExtractedFact {
+  field: string;
+  value: string | number | null;
+  confidence: number | null;
+  source: {
+    page?: number;
+    text?: string;
+  } | null;
+}
+
+export interface ExtractedDocument {
+  documentId: string;
+  documentType: EvidenceType | 'unknown';
+  extractionStatus: 'COMPLETED' | 'FAILED' | 'UNSUPPORTED_FORMAT';
+  facts: Record<string, ExtractedFact>;
+  confidence: number;
+  warnings: string[];
+  modelId: string;
+  extractedAt: string;
+}
+
+// Keeping the original ExtractedData for backward compatibility with Phase 2 UI
 export interface ExtractedData {
   quantity?: number;          // kg
   unit?: string;
@@ -45,6 +67,7 @@ export interface ExtractedData {
   certificateNumber?: string;
   materialType?: string;
   aiSummary?: string;
+  bedrockExtraction?: ExtractedDocument; // Attached for Phase 3D
 }
 
 export interface Contradiction {
@@ -115,7 +138,7 @@ export interface KPIData {
   rejectedThisMonth: number;
   avgRiskScore: number;
   totalQuantityVerifiedKg: number;
-  complianceRate: number; // percentage
+  verificationRate: number; // percentage
 }
 
 export interface RiskDistribution {

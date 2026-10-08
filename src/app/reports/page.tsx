@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { Download, FileText, BarChart2, Calendar, Filter } from 'lucide-react';

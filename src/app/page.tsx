@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import {
@@ -104,8 +105,8 @@ export default function DashboardPage() {
             </p>
             <div className="hero-stats">
               <div className="hero-stat">
-                <span className="hero-stat-val">{kpi.complianceRate}%</span>
-                <span className="hero-stat-label">Compliance Rate</span>
+                <span className="hero-stat-val">{kpi.verificationRate}%</span>
+                <span className="hero-stat-label">Verification Rate</span>
               </div>
               <div className="hero-stat">
                 <span className="hero-stat-val">
@@ -173,8 +174,8 @@ export default function DashboardPage() {
             deltaDir="up"
           />
           <KPICard
-            label="Compliance Rate"
-            value={kpi.complianceRate}
+            label="Verification Rate"
+            value={kpi.verificationRate}
             suffix="%"
             icon={ShieldCheck}
             iconBg="var(--color-blue-50)"
@@ -396,11 +397,11 @@ export default function DashboardPage() {
             </div>
             <div className="activity-feed">
               {[
-                { action: 'CASE-004 escalated — Critical risk score (88)', actor: 'Risk Engine', role: 'system', time: '2m ago', color: 'var(--color-danger)' },
-                { action: 'Evidence extracted from CASE-001 (3 documents)', actor: 'AI Engine', role: 'system', time: '18m ago', color: 'var(--color-blue-500)' },
-                { action: 'CASE-003 approved by Priya Sharma', actor: 'Priya Sharma', role: 'reviewer', time: '2h ago', color: 'var(--color-success)' },
-                { action: 'CASE-002 flagged — Location mismatch detected', actor: 'Risk Engine', role: 'system', time: '5h ago', color: 'var(--color-orange)' },
-                { action: 'CASE-005 rejected — Date sequence violation', actor: 'Arjun Mehta', role: 'reviewer', time: '1d ago', color: 'var(--color-danger)' },
+                { action: 'EP-2026-00124 escalated — Critical risk score (88)', actor: 'Risk Engine', role: 'system', time: '2m ago', color: 'var(--color-danger)' },
+                { action: 'Evidence extracted from EP-2026-00121 (3 documents)', actor: 'AI Engine', role: 'system', time: '18m ago', color: 'var(--color-blue-500)' },
+                { action: 'EP-2026-00123 approved by Priya Sharma', actor: 'Priya Sharma', role: 'reviewer', time: '2h ago', color: 'var(--color-success)' },
+                { action: 'EP-2026-00122 flagged — Location mismatch detected', actor: 'Risk Engine', role: 'system', time: '5h ago', color: 'var(--color-orange)' },
+                { action: 'EP-2026-00125 rejected — Date sequence violation', actor: 'Arjun Mehta', role: 'reviewer', time: '1d ago', color: 'var(--color-danger)' },
                 { action: 'Monthly batch upload — 28 cases submitted', actor: 'System', role: 'system', time: '2d ago', color: 'var(--color-gray-400)' },
               ].map((item, i, arr) => (
                 <div key={i} className="activity-item">
