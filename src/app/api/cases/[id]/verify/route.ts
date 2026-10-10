@@ -1,14 +1,25 @@
 import { NextResponse } from 'next/server';
 import { CaseRepository } from '@/lib/aws/dynamodb/repository';
 import { runDemoVerification } from '@/lib/services/verificationService';
+import { getSession } from '@/lib/auth';
 
 export async function POST(request: Request, context: { params: Promise<{ id: string }> }) {
   const { id } = await context.params;
   
   try {
+    const session = await getSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     // Fetch from real persistence
     const caseData = await CaseRepository.getCase(id);
     if (!caseData) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+
+    // Authorization: Only the owner or a reviewer can verify
+    if (session.role === 'producer' && caseData.producer.producerId !== session.producerId) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
 
     console.log(JSON.stringify({
       event: 'VERIFICATION_STARTED',

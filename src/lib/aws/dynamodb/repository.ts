@@ -164,12 +164,21 @@ export const CaseRepository = {
   /**
    * Lists all Cases (Scans for demo purposes. In prod, use GSI queries)
    */
-  listCases: async (): Promise<Case[]> => {
+  listCases: async (orgId?: string): Promise<Case[]> => {
+    let filterExpression = '#typ = :caseType';
+    const expressionAttributeNames: Record<string, string> = { '#typ': 'Type' };
+    const expressionAttributeValues: Record<string, unknown> = { ':caseType': 'Case' };
+
+    if (orgId) {
+      filterExpression += ' AND producer.producerId = :orgId';
+      expressionAttributeValues[':orgId'] = orgId;
+    }
+
     const { Items } = await dynamoClient.send(new ScanCommand({
       TableName: TABLE_NAME,
-      FilterExpression: '#typ = :caseType',
-      ExpressionAttributeNames: { '#typ': 'Type' },
-      ExpressionAttributeValues: marshall({ ':caseType': 'Case' })
+      FilterExpression: filterExpression,
+      ExpressionAttributeNames: expressionAttributeNames,
+      ExpressionAttributeValues: marshall(expressionAttributeValues)
     }));
 
     if (!Items) return [];
@@ -214,6 +223,20 @@ export const CaseRepository = {
       UpdateExpression: `SET ${updateExpressions.join(', ')}`,
       ExpressionAttributeNames: expressionAttributeNames,
       ExpressionAttributeValues: marshall(expressionAttributeValues, { removeUndefinedValues: true })
+    }));
+  },
+
+  /**
+   * Adds a single audit log entry to a case.
+   */
+  addAuditLog: async (caseId: string, audit: AuditEntry): Promise<void> => {
+    await dynamoClient.send(new PutItemCommand({
+      TableName: TABLE_NAME,
+      Item: marshall({
+        ...SchemaKeys.audit(caseId, audit.entryId),
+        Type: 'Audit',
+        ...audit
+      }, { removeUndefinedValues: true })
     }));
   }
 };

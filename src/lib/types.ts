@@ -3,7 +3,7 @@
 // ──────────────────────────────────────────────
 
 export type RiskLevel = 'low' | 'medium' | 'high' | 'critical';
-export type CaseStatus = 'pending' | 'in_review' | 'approved' | 'rejected' | 'escalated';
+export type CaseStatus = 'draft' | 'evidence_uploaded' | 'processing' | 'needs_more_evidence' | 'ready_for_review' | 'pending' | 'in_review' | 'approved' | 'rejected' | 'escalated' | 'review_completed';
 export type EvidenceType = 'invoice' | 'certificate' | 'photo' | 'manifest' | 'report';
 export type FindingType =
   | 'quantity_mismatch'
@@ -11,7 +11,11 @@ export type FindingType =
   | 'location_mismatch'
   | 'forged_document'
   | 'missing_certificate'
-  | 'low_confidence';
+  | 'low_confidence'
+  | 'duplicate_evidence'
+  | 'entity_inconsistency'
+  | 'batch_mismatch'
+  | 'missing_information';
 
 export interface Producer {
   producerId: string;
@@ -34,25 +38,29 @@ export interface Evidence {
   uploadedAt: string; // ISO date
   fileSize: number; // bytes
   mimeType: string;
+  fileHash?: string; // SHA-256 hash
 }
 
 export interface ExtractedFact {
   field: string;
-  value: string | number | null;
+  value: string | number | boolean | null;
   confidence: number | null;
   source: {
-    page?: number;
+    page?: number | null;
     text?: string;
+    inferred?: boolean;
   } | null;
 }
 
 export interface ExtractedDocument {
   documentId: string;
-  documentType: EvidenceType | 'unknown';
-  extractionStatus: 'COMPLETED' | 'FAILED' | 'UNSUPPORTED_FORMAT';
+  documentType: 'epr_certificate' | 'collection_receipt' | 'transportation_document' | 'recycler_intake' | 'processing_report' | 'recovery_report' | 'invoice' | 'registration' | 'other' | 'unknown';
+  classificationRationale?: string;
+  extractionStatus: 'UPLOADED' | 'PENDING_PROCESSING' | 'PROCESSING' | 'COMPLETED' | 'FAILED' | 'UNSUPPORTED_FORMAT' | 'PROVIDER_UNAVAILABLE';
   facts: Record<string, ExtractedFact>;
   confidence: number;
   warnings: string[];
+  requiresHumanReview?: boolean;
   modelId: string;
   extractedAt: string;
 }
@@ -128,6 +136,14 @@ export interface Case {
   financialYear: string;   // e.g. "2024-25"
   materialCategory: string;
   targetQuantityKg: number;
+  
+  // New fields for Step A
+  claimTitle?: string;
+  periodStart?: string;
+  periodEnd?: string;
+  activity?: string;
+  recyclerRegistrationRef?: string;
+  description?: string;
 }
 
 // Dashboard summary types

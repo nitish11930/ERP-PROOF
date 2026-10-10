@@ -18,10 +18,15 @@ export default function VerifyClaimPage() {
   const producers = getProducers();
 
   // Form State
+  const [claimTitle, setClaimTitle] = useState('');
   const [producerId, setProducerId] = useState('');
   const [claimQuantity, setClaimQuantity] = useState('');
-  const [claimDate, setClaimDate] = useState('');
+  const [periodStart, setPeriodStart] = useState('');
+  const [periodEnd, setPeriodEnd] = useState('');
+  const [activity, setActivity] = useState('');
+  const [recyclerRef, setRecyclerRef] = useState('');
   const [location, setLocation] = useState('');
+  const [description, setDescription] = useState('');
   
   // Evidence State
   const [uploads, setUploads] = useState<FileUpload[]>([]);
@@ -75,7 +80,8 @@ export default function VerifyClaimPage() {
           body: JSON.stringify({
             caseId: newCaseId,
             fileName: u.file.name,
-            contentType: u.file.type
+            contentType: u.file.type,
+            fileSize: u.file.size
           })
         });
         
@@ -91,19 +97,23 @@ export default function VerifyClaimPage() {
             body: u.file
           });
           if (!uploadRes.ok) throw new Error('Failed to upload to S3');
+        } else {
+          alert(`AWS S3 offline. Simulated mock upload for ${u.file.name}`);
         }
         
-        // 3. Store evidence metadata
+        // 3. Store evidence metadata locally before submitting case
         const extracted: ExtractedData = {
           quantity: u.type === 'certificate' ? Number(claimQuantity) : Number(claimQuantity) - 550, // Intentional gap for demo
           unit: 'kg',
-          date: claimDate,
+          date: periodEnd || new Date().toISOString(),
           location: location
         };
   
+        // eslint-disable-next-line react-hooks/purity
+        const evId = `EV-${Date.now()}-${i}`;
+        
         evidence.push({
-          // eslint-disable-next-line react-hooks/purity
-          evidenceId: `EV-${Date.now()}-${i}`,
+          evidenceId: evId,
           caseId: newCaseId,
           type: u.type,
           fileName: u.file.name,
@@ -124,7 +134,7 @@ export default function VerifyClaimPage() {
       caseId: newCaseId,
       producer,
       submittedAt: new Date().toISOString(),
-      status: 'pending',
+      status: 'processing',
       claimedQuantityKg: Number(claimQuantity),
       verifiedQuantityKg: null,
       riskScore: 0,
@@ -146,6 +156,12 @@ export default function VerifyClaimPage() {
       financialYear: '2026-27',
       materialCategory: producer.category,
       targetQuantityKg: Number(claimQuantity) * 1.5,
+      claimTitle,
+      periodStart,
+      periodEnd,
+      activity,
+      recyclerRegistrationRef: recyclerRef,
+      description,
     };
 
     try {
@@ -160,6 +176,13 @@ export default function VerifyClaimPage() {
       saveCase(newCase);
     }
     
+    // Trigger confirm for SHA-256 validation
+    for (const ev of evidence) {
+      fetch(`/api/cases/${newCaseId}/evidence/${ev.evidenceId}/confirm`, {
+        method: 'POST',
+      }).catch(err => console.error('Confirm failed:', err));
+    }
+
     // Slight delay to simulate network
     setTimeout(() => {
       router.push(`/verification/${newCaseId}`);
@@ -183,8 +206,13 @@ export default function VerifyClaimPage() {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+              <div style={{ gridColumn: '1 / -1' }}>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Claim Title *</label>
+                <input type="text" className="filter-input" style={{ width: '100%', height: 40 }} placeholder="e.g. Q3 2026 Electronics Recycling Claim" value={claimTitle} onChange={e => setClaimTitle(e.target.value)} required />
+              </div>
+
               <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Recycler / Producer *</label>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Organization *</label>
                 <select className="filter-select" style={{ width: '100%', height: 40 }} value={producerId} onChange={e => setProducerId(e.target.value)} required>
                   <option value="">Select an organization...</option>
                   {producers.map(p => (
@@ -199,13 +227,33 @@ export default function VerifyClaimPage() {
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Claim Date *</label>
-                <input type="date" className="filter-input" style={{ width: '100%', height: 40 }} value={claimDate} onChange={e => setClaimDate(e.target.value)} required />
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Period Start Date *</label>
+                <input type="date" className="filter-input" style={{ width: '100%', height: 40 }} value={periodStart} onChange={e => setPeriodStart(e.target.value)} required />
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Location / Facility</label>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Period End Date *</label>
+                <input type="date" className="filter-input" style={{ width: '100%', height: 40 }} value={periodEnd} onChange={e => setPeriodEnd(e.target.value)} required />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Recycling / Processing Activity</label>
+                <input type="text" className="filter-input" style={{ width: '100%', height: 40 }} placeholder="e.g. Dismantling and Material Recovery" value={activity} onChange={e => setActivity(e.target.value)} />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Recycler Registration / Cert Ref</label>
+                <input type="text" className="filter-input" style={{ width: '100%', height: 40 }} placeholder="e.g. CPCB-RC-2026-XXXX" value={recyclerRef} onChange={e => setRecyclerRef(e.target.value)} />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Facility / Location</label>
                 <input type="text" className="filter-input" style={{ width: '100%', height: 40 }} placeholder="e.g. Mumbai, MH" value={location} onChange={e => setLocation(e.target.value)} />
+              </div>
+              
+              <div style={{ gridColumn: '1 / -1' }}>
+                <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: 'var(--color-slate-700)', marginBottom: 8 }}>Description or Context</label>
+                <textarea className="filter-input" style={{ width: '100%', padding: '10px', minHeight: '80px', resize: 'vertical' }} placeholder="Optional additional details about this claim" value={description} onChange={e => setDescription(e.target.value)} />
               </div>
             </div>
           </div>
@@ -294,7 +342,7 @@ export default function VerifyClaimPage() {
 
           <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 12 }}>
             <button type="button" className="btn btn-ghost" onClick={() => router.back()}>Cancel</button>
-            <button type="submit" className="btn btn-primary" disabled={isSubmitting || !producerId || !claimQuantity || uploads.length === 0}>
+            <button type="submit" className="btn btn-primary" disabled={isSubmitting || !producerId || !claimQuantity || !claimTitle || !periodStart || !periodEnd || uploads.length === 0}>
               {isSubmitting ? 'Creating Case...' : 'Start Verification'} <ArrowRight size={16} />
             </button>
           </div>

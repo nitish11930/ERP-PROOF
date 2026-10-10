@@ -1,9 +1,14 @@
 import { NextResponse } from 'next/server';
 import { CaseRepository } from '@/lib/aws/dynamodb/repository';
+import { getSession } from '@/lib/auth';
 
 export async function GET() {
   try {
-    const cases = await CaseRepository.listCases();
+    const session = await getSession();
+    if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    const orgId = session.role === 'producer' ? session.producerId : undefined;
+    const cases = await CaseRepository.listCases(orgId);
     return NextResponse.json(cases);
   } catch (error: unknown) {
     console.warn('AWS SDK Error (falling back to local store for GET /cases):', (error as Error).message);
@@ -13,7 +18,21 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
+    const session = await getSession();
+    if (!session || session.role !== 'producer' || !session.producerId) {
+      return NextResponse.json({ error: 'Forbidden. Only producers can create cases.' }, { status: 403 });
+    }
+
     const caseData = await request.json();
+
+    // Basic validation
+    if (!caseData || !caseData.caseId || !caseData.producer || !caseData.claimedQuantityKg) {
+      return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
+    }
+
+    // Force the case to belong to the authenticated producer
+    caseData.producer.producerId = session.producerId;
+
     await CaseRepository.createCase(caseData);
     
     console.log(JSON.stringify({

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import {
   ArrowLeft, FileText, Shield, Clock, CheckCircle, XCircle,
@@ -9,8 +9,15 @@ import {
 } from 'lucide-react';
 import { TopBar } from '@/components/layout/TopBar';
 import { StatusBadge, RiskBadge, EvidenceTypeBadge } from '@/components/ui/Badge';
-import { DEMO_CASES } from '@/lib/data/demo';
 import { getRiskColor, getRiskBgColor } from '@/lib/risk/calculator';
+import { Upload, X } from 'lucide-react';
+import type { Case, EvidenceType } from '@/lib/types';
+
+interface FileUpload {
+  file: File;
+  type: EvidenceType;
+  preview: string;
+}
 
 const FINDING_ICONS: Record<string, React.ElementType> = {
   quantity_mismatch: Weight,
@@ -25,12 +32,134 @@ export default function CaseDetailPage() {
   const params = useParams();
   const router = useRouter();
   const caseId = params.id as string;
-  const c = DEMO_CASES.find((x) => x.caseId === caseId);
+  const [c, setCaseData] = useState<Case | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`/api/cases/${caseId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && !data.error) setCaseData(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, [caseId]);
 
   const [expandedFinding, setExpandedFinding] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'overview'|'evidence'|'findings'|'audit'>('overview');
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [reviewComment, setReviewComment] = useState('');
+  
+  // Evidence Upload State
+  const [uploads, setUploads] = useState<FileUpload[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
+
+  const handleVerify = async () => {
+    setIsVerifying(true);
+    try {
+      const res = await fetch(`/api/cases/${caseId}/verify`, {
+        method: 'POST'
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setCaseData(data);
+        setActiveTab('findings');
+      } else {
+        alert('Verification failed. AWS Database offline or unreachable.');
+      }
+    } catch (e) {
+      console.error(e);
+      alert('Verification network error. Check connection.');
+    }
+    setIsVerifying(false);
+  };
+
+  const handleFileAdd = (file: File, type: EvidenceType) => {
+    setUploads(prev => [...prev, { file, type, preview: URL.createObjectURL(file) }]);
+  };
+
+  const removeUpload = (index: number) => {
+    setUploads(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const handleUploadSubmit = async () => {
+    if (uploads.length === 0) return;
+    setIsUploading(true);
+
+    for (const u of uploads) {
+      try {
+        const res = await fetch('/api/evidence/upload-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            caseId: caseId,
+            fileName: u.file.name,
+            contentType: u.file.type,
+            fileSize: u.file.size
+          })
+        });
+        
+        if (!res.ok) throw new Error('Failed to get upload URL');
+        const { uploadUrl, key, mock } = await res.json();
+        
+        if (!mock) {
+          const uploadRes = await fetch(uploadUrl, {
+            method: 'PUT',
+            headers: { 'Content-Type': u.file.type },
+            body: u.file
+          });
+          if (!uploadRes.ok) throw new Error('Failed to upload to S3');
+        } else {
+          alert(`AWS S3 offline. Simulated mock upload for ${u.file.name}`);
+        }
+
+        // Add the evidence record to the case via API
+        const addEvRes = await fetch(`/api/cases/${caseId}/evidence`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: u.type,
+            fileName: u.file.name,
+            s3Key: key,
+            fileSize: u.file.size,
+            mimeType: u.file.type
+          })
+        });
+
+        if (addEvRes.ok) {
+          const { evidenceId } = await addEvRes.json();
+          // Confirm hash
+          await fetch(`/api/cases/${caseId}/evidence/${evidenceId}/confirm`, {
+            method: 'POST',
+          });
+        }
+      } catch (err) {
+        console.error('File upload failed:', err);
+      }
+    }
+
+    // Refresh case data
+    fetch(`/api/cases/${caseId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && !data.error) setCaseData(data);
+      });
+
+    setUploads([]);
+    setIsUploading(false);
+  };
+
+  if (loading) {
+    return (
+      <>
+        <TopBar title="Loading Case..." />
+        <main className="page-content" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+          <div>Loading case details...</div>
+        </main>
+      </>
+    );
+  }
 
   if (!c) {
     return (
@@ -60,6 +189,26 @@ export default function CaseDetailPage() {
     { id: 'findings',  label: `AI Findings (${c.findings.length})` },
     { id: 'audit',     label: `Audit Trail (${c.auditLog.length})` },
   ] as const;
+
+  const submitDecision = async (decision: string) => {
+    try {
+      const res = await fetch(`/api/cases/${caseId}/review`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ decision, comments: reviewComment })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setCaseData(data.case);
+        setShowReviewForm(false);
+        setReviewComment('');
+      } else {
+        alert('Failed to submit decision (unauthorized?)');
+      }
+    } catch (e) {
+      alert('Network error submitting decision');
+    }
+  };
 
   return (
     <>
@@ -278,7 +427,10 @@ export default function CaseDetailPage() {
                       }}
                     />
                     <div style={{ display: 'flex', gap: 8 }}>
-                      <button className="btn btn-primary btn-sm">Submit Decision</button>
+                      <button className="btn btn-success btn-sm" onClick={() => submitDecision('approved')}>Approve</button>
+                      <button className="btn btn-danger btn-sm" onClick={() => submitDecision('rejected')}>Reject</button>
+                      <button className="btn btn-secondary btn-sm" onClick={() => submitDecision('needs_more_info')}>Request Info</button>
+                      <button className="btn btn-secondary btn-sm" onClick={() => submitDecision('escalated')}>Escalate</button>
                       <button className="btn btn-ghost btn-sm" onClick={() => setShowReviewForm(false)}>Cancel</button>
                     </div>
                   </div>
@@ -291,12 +443,59 @@ export default function CaseDetailPage() {
         {/* ── Tab: Evidence ── */}
         {activeTab === 'evidence' && (
           <div>
+            <div className="card" style={{ marginBottom: 20 }}>
+              <div className="section-title" style={{ marginBottom: 12 }}>Upload New Evidence</div>
+              <div style={{ display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                <input 
+                  type="file" 
+                  onChange={e => e.target.files && e.target.files[0] && handleFileAdd(e.target.files[0], 'certificate')} 
+                  style={{ display: 'none' }} 
+                  id="evidence-upload" 
+                />
+                <label htmlFor="evidence-upload" className="btn btn-secondary" style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  <Upload size={14} /> Select File
+                </label>
+                
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  {uploads.map((u, idx) => (
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: 10, background: 'var(--color-gray-50)', padding: '8px 12px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-gray-200)' }}>
+                      <FileText size={16} style={{ color: 'var(--color-blue-500)' }} />
+                      <div style={{ flex: 1, fontSize: '13px', fontWeight: 600 }}>{u.file.name}</div>
+                      <select 
+                        value={u.type} 
+                        onChange={(e) => {
+                          const newUploads = [...uploads];
+                          newUploads[idx].type = e.target.value as EvidenceType;
+                          setUploads(newUploads);
+                        }}
+                        style={{ fontSize: '12px', padding: '4px 8px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-gray-300)' }}
+                      >
+                        <option value="certificate">Certificate</option>
+                        <option value="invoice">Invoice</option>
+                        <option value="manifest">Manifest</option>
+                        <option value="photo">Photo</option>
+                        <option value="report">Report</option>
+                      </select>
+                      <button className="btn btn-ghost btn-sm" onClick={() => removeUpload(idx)}><X size={14} /></button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {uploads.length > 0 && (
+                <div style={{ marginTop: 12, textAlign: 'right' }}>
+                  <button className="btn btn-primary" onClick={handleUploadSubmit} disabled={isUploading}>
+                    {isUploading ? 'Uploading...' : 'Upload & Process'}
+                  </button>
+                </div>
+              )}
+            </div>
+
             {c.evidence.length === 0 ? (
               <div className="card">
                 <div className="empty-state" style={{ padding: '40px 20px' }}>
                   <div className="empty-state-icon"><FileText size={24} /></div>
                   <div className="empty-state-title">No evidence loaded</div>
-                  <div className="empty-state-desc">Evidence files for this case have not been loaded into demo data.</div>
+                  <div className="empty-state-desc">No evidence files have been attached to this case yet.</div>
                 </div>
               </div>
             ) : (
@@ -410,6 +609,16 @@ export default function CaseDetailPage() {
         {/* ── Tab: AI Findings ── */}
         {activeTab === 'findings' && (
           <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 700 }}>Analysis</h3>
+              <button 
+                className="btn btn-primary btn-sm" 
+                onClick={handleVerify} 
+                disabled={isVerifying || c.status === 'approved' || c.status === 'rejected'}
+              >
+                {isVerifying ? 'Running Engine...' : 'Run Verification Engine'}
+              </button>
+            </div>
             {c.findings.length === 0 ? (
               <div className="card">
                 <div className="empty-state" style={{ padding: '40px 20px' }}>

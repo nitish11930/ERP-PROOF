@@ -10,14 +10,22 @@ export default function LoginPage() {
   const [password, setPassword] = useState('EPRProof@2026');
   const [error, setError] = useState('');
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email === 'demo@eprproof.ai' && password === 'EPRProof@2026') {
-      // Set a simple cookie for demo authentication
-      document.cookie = 'demo_auth=true; path=/; max-age=86400';
-      router.push('/');
-    } else {
-      setError('Invalid demo credentials.');
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      if (res.ok) {
+        router.push('/');
+      } else {
+        const data = await res.json();
+        setError(data.error || 'Invalid credentials.');
+      }
+    } catch (err) {
+      setError('An error occurred during login.');
     }
   };
 

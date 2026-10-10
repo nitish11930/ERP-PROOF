@@ -1,21 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, Filter, Download, Eye, ChevronRight } from 'lucide-react';
 import { TopBar } from '@/components/layout/TopBar';
 import { StatusBadge, RiskBadge } from '@/components/ui/Badge';
-import { DEMO_CASES } from '@/lib/data/demo';
 import { getRiskColor } from '@/lib/risk/calculator';
-import type { CaseStatus, RiskLevel } from '@/lib/types';
+import type { Case, CaseStatus, RiskLevel } from '@/lib/types';
 
 export default function CasesPage() {
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [riskFilter, setRiskFilter] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('submittedAt');
+  const [cases, setCases] = useState<Case[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const filtered = DEMO_CASES.filter((c) => {
+  useEffect(() => {
+    fetch('/api/cases')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setCases(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  const filtered = cases.filter((c) => {
     const q = search.toLowerCase();
     const matchSearch =
       !q ||
@@ -38,22 +49,34 @@ export default function CasesPage() {
     <>
       <TopBar
         title="Verification Cases"
-        subtitle={`${DEMO_CASES.length} total cases · ${DEMO_CASES.filter(c => c.status === 'pending').length} pending review`}
+        subtitle={`${cases.length} total cases · ${cases.filter(c => c.status === 'pending').length} pending review`}
       />
 
       <main className="page-content" id="cases-main">
         {/* Summary Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 12, marginBottom: 24 }}>
           {(['pending','in_review','approved','rejected','escalated'] as CaseStatus[]).map((s) => {
-            const count = DEMO_CASES.filter(c => c.status === s).length;
+            const count = cases.filter(c => c.status === s).length;
             const colors: Record<CaseStatus, string> = {
+              draft: 'var(--color-gray-400)',
+              evidence_uploaded: 'var(--color-gray-500)',
+              processing: 'var(--color-blue-400)',
+              needs_more_evidence: 'var(--color-orange)',
+              ready_for_review: 'var(--color-warning)',
               pending: 'var(--color-warning)', in_review: 'var(--color-blue-500)',
               approved: 'var(--color-success)', rejected: 'var(--color-danger)',
               escalated: 'var(--color-purple)',
+              review_completed: 'var(--color-success-dark)',
             };
             const labels: Record<CaseStatus, string> = {
+              draft: 'Draft',
+              evidence_uploaded: 'Evidence Uploaded',
+              processing: 'Processing',
+              needs_more_evidence: 'Needs More Evidence',
+              ready_for_review: 'Ready for Review',
               pending: 'Pending', in_review: 'In Review',
               approved: 'Approved', rejected: 'Rejected', escalated: 'Escalated',
+              review_completed: 'Review Completed',
             };
             return (
               <button
@@ -119,7 +142,7 @@ export default function CasesPage() {
 
         {/* Results count */}
         <div style={{ fontSize: '13px', color: 'var(--color-gray-500)', marginBottom: 12 }}>
-          Showing <strong style={{ color: 'var(--color-gray-800)' }}>{sorted.length}</strong> of {DEMO_CASES.length} cases
+          Showing <strong style={{ color: 'var(--color-gray-800)' }}>{sorted.length}</strong> of {cases.length} cases
         </div>
 
         {/* Cases Table */}

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
+import { useState, useEffect } from 'react';
 import {
   AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
@@ -12,11 +13,9 @@ import {
 } from 'lucide-react';
 import { TopBar } from '@/components/layout/TopBar';
 import { StatusBadge, RiskBadge } from '@/components/ui/Badge';
-import {
-  DEMO_KPI, DEMO_RISK_DISTRIBUTION, DEMO_MONTHLY_TRENDS, DEMO_CASES,
-} from '@/lib/data/demo';
 import { getRiskColor } from '@/lib/risk/calculator';
 import Link from 'next/link';
+import type { Case, KPIData, RiskDistribution, MonthlyTrend } from '@/lib/types';
 
 // ── Custom Chart Tooltip ─────────────────────
 function CustomTooltip({ active, payload, label }: any) {
@@ -71,8 +70,37 @@ function KPICard({
 }
 
 export default function DashboardPage() {
-  const kpi = DEMO_KPI;
-  const recentCases = DEMO_CASES.slice(0, 5);
+  const [cases, setCases] = useState<Case[]>([]);
+
+  useEffect(() => {
+    fetch('/api/cases')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setCases(data);
+      })
+      .catch(console.error);
+  }, []);
+
+  // Compute KPIs
+  const totalCases = cases.length;
+  const pendingReview = cases.filter(c => c.status === 'in_review' || c.status === 'pending').length;
+  const approvedThisMonth = cases.filter(c => c.status === 'approved').length; // Simplify logic for demo
+  const rejectedThisMonth = cases.filter(c => c.status === 'rejected').length;
+  const avgRiskScore = cases.length ? (cases.reduce((sum, c) => sum + c.riskScore, 0) / cases.length).toFixed(1) : 0;
+  const totalQuantityVerifiedKg = cases.reduce((sum, c) => sum + (c.verifiedQuantityKg || 0), 0);
+  const verificationRate = cases.length ? ((cases.filter(c => c.status === 'approved' || c.status === 'rejected').length / cases.length) * 100).toFixed(1) : 0;
+
+  const kpi = {
+    totalCases,
+    pendingReview,
+    approvedThisMonth,
+    rejectedThisMonth,
+    avgRiskScore,
+    totalQuantityVerifiedKg,
+    verificationRate
+  };
+
+  const recentCases = [...cases].sort((a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime()).slice(0, 5);
 
   const RISK_COLORS = {
     low:      'var(--color-success)',
@@ -81,11 +109,34 @@ export default function DashboardPage() {
     critical: 'var(--color-danger)',
   };
 
-  const pieData = DEMO_RISK_DISTRIBUTION.map((d) => ({
-    name: d.level.charAt(0).toUpperCase() + d.level.slice(1),
-    value: d.count,
-    color: getRiskColor(d.level),
-  }));
+  // Compute Risk Distribution
+  const riskCounts = { low: 0, medium: 0, high: 0, critical: 0 };
+  cases.forEach(c => {
+    if (riskCounts[c.riskLevel] !== undefined) riskCounts[c.riskLevel]++;
+  });
+  
+  const pieData = Object.entries(riskCounts).map(([level, count]) => ({
+    name: level.charAt(0).toUpperCase() + level.slice(1),
+    level,
+    value: count,
+    count,
+    percentage: cases.length ? Math.round((count / cases.length) * 100) : 0,
+    color: getRiskColor(level as any),
+  })).filter(d => d.value > 0);
+
+  // Compute Monthly Trends
+  const trendsMap: Record<string, MonthlyTrend> = {};
+  cases.forEach(c => {
+    const d = new Date(c.submittedAt);
+    const month = d.toLocaleString('default', { month: 'short' });
+    if (!trendsMap[month]) {
+      trendsMap[month] = { month, submitted: 0, approved: 0, rejected: 0 };
+    }
+    trendsMap[month].submitted++;
+    if (c.status === 'approved') trendsMap[month].approved++;
+    if (c.status === 'rejected') trendsMap[month].rejected++;
+  });
+  const monthlyTrends = Object.values(trendsMap);
 
   return (
     <>
@@ -215,7 +266,7 @@ export default function DashboardPage() {
               </div>
             </div>
             <ResponsiveContainer width="100%" height={220}>
-              <AreaChart data={DEMO_MONTHLY_TRENDS} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
+              <AreaChart data={monthlyTrends} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
                 <defs>
                   <linearGradient id="gSubmitted" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%"  stopColor="var(--color-blue-500)" stopOpacity={0.15} />
@@ -266,9 +317,9 @@ export default function DashboardPage() {
             </ResponsiveContainer>
             {/* Legend */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {DEMO_RISK_DISTRIBUTION.map((d) => (
+              {pieData.map((d) => (
                 <div key={d.level} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '12px' }}>
-                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: getRiskColor(d.level), flexShrink: 0 }} />
+                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: getRiskColor(d.level as any), flexShrink: 0 }} />
                   <span style={{ flex: 1, color: 'var(--color-gray-600)', textTransform: 'capitalize' }}>{d.level}</span>
                   <span style={{ fontWeight: 700, color: 'var(--color-gray-800)' }}>{d.count}</span>
                   <span style={{ color: 'var(--color-gray-400)', minWidth: 36, textAlign: 'right' }}>{d.percentage}%</span>
@@ -370,7 +421,7 @@ export default function DashboardPage() {
               </div>
               <AlertTriangle size={16} style={{ color: 'var(--color-warning)' }} />
             </div>
-            {DEMO_CASES.flatMap((c) => c.findings).slice(0, 4).map((f) => (
+            {cases.flatMap((c) => c.findings).slice(0, 4).map((f) => (
               <div key={f.findingId} className="finding-card">
                 <div className="finding-card-header">
                   <div className="finding-title">{f.title}</div>
@@ -396,25 +447,29 @@ export default function DashboardPage() {
               </div>
             </div>
             <div className="activity-feed">
-              {[
-                { action: 'EP-2026-00124 escalated — Critical risk score (88)', actor: 'Risk Engine', role: 'system', time: '2m ago', color: 'var(--color-danger)' },
-                { action: 'Evidence extracted from EP-2026-00121 (3 documents)', actor: 'AI Engine', role: 'system', time: '18m ago', color: 'var(--color-blue-500)' },
-                { action: 'EP-2026-00123 approved by Priya Sharma', actor: 'Priya Sharma', role: 'reviewer', time: '2h ago', color: 'var(--color-success)' },
-                { action: 'EP-2026-00122 flagged — Location mismatch detected', actor: 'Risk Engine', role: 'system', time: '5h ago', color: 'var(--color-orange)' },
-                { action: 'EP-2026-00125 rejected — Date sequence violation', actor: 'Arjun Mehta', role: 'reviewer', time: '1d ago', color: 'var(--color-danger)' },
-                { action: 'Monthly batch upload — 28 cases submitted', actor: 'System', role: 'system', time: '2d ago', color: 'var(--color-gray-400)' },
-              ].map((item, i, arr) => (
-                <div key={i} className="activity-item">
-                  <div className="activity-dot-wrap">
-                    <div className="activity-dot" style={{ background: item.color }} />
-                    {i < arr.length - 1 && <div className="activity-line" />}
-                  </div>
-                  <div className="activity-body">
-                    <div className="activity-title">{item.action}</div>
-                    <div className="activity-meta">{item.actor} · {item.time}</div>
-                  </div>
-                </div>
-              ))}
+              {cases.flatMap(c => c.auditLog.map(a => ({ ...a, caseId: c.caseId })))
+                .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+                .slice(0, 6)
+                .map((item, i, arr) => {
+                  const colors: Record<string, string> = {
+                    system: 'var(--color-blue-500)',
+                    reviewer: 'var(--color-success)',
+                    analyst: 'var(--color-purple)',
+                    admin: 'var(--color-danger)',
+                  };
+                  return (
+                    <div key={item.entryId} className="activity-item">
+                      <div className="activity-dot-wrap">
+                        <div className="activity-dot" style={{ background: colors[item.actorRole] || 'var(--color-gray-400)' }} />
+                        {i < arr.length - 1 && <div className="activity-line" />}
+                      </div>
+                      <div className="activity-body">
+                        <div className="activity-title">{item.caseId}: {item.action}</div>
+                        <div className="activity-meta">{item.actor} · {new Date(item.timestamp).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}</div>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>

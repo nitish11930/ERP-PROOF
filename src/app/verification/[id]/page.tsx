@@ -1,23 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { Loader2, CheckCircle, Database, FileSearch, ShieldAlert } from 'lucide-react';
-import { getCase, saveCase } from '@/lib/services/store';
-import { runDemoVerification } from '@/lib/services/verificationService';
 import { TopBar } from '@/components/layout/TopBar';
 import type { Case } from '@/lib/types';
 
-export default function VerificationProcessingPage({ params }: { params: { id: string } }) {
+export default function VerificationProcessingPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
-  const currentCase = getCase(params.id);
+  const { id } = use(params);
+  const [currentCase, setCurrentCase] = useState<Case | null>(null);
   const [step, setStep] = useState(0);
 
   useEffect(() => {
-    if (!currentCase) {
-      router.push('/cases');
-      return;
-    }
+    fetch(`/api/cases/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data || data.error) router.push('/cases');
+        else setCurrentCase(data);
+      });
+  }, [id, router]);
+
+  useEffect(() => {
+    if (!currentCase) return;
 
     // Simulate processing steps, but inject real extraction for Step 2
     const steps = [
@@ -28,7 +33,7 @@ export default function VerificationProcessingPage({ params }: { params: { id: s
           // We'll do it sequentially to avoid rate limits in demo mode
           try {
             for (const ev of currentCase.evidence) {
-              const res = await fetch(`/api/cases/${params.id}/evidence/${ev.evidenceId}/extract`, { method: 'POST' });
+              const res = await fetch(`/api/cases/${id}/evidence/${ev.evidenceId}/extract`, { method: 'POST' });
               // We ignore failures here to ensure the demo continues even if Bedrock is offline
               if (!res.ok) console.warn(`Extraction failed for ${ev.evidenceId}`);
             }
@@ -39,20 +44,18 @@ export default function VerificationProcessingPage({ params }: { params: { id: s
       { delay: 5500, action: () => setStep(3) },
       { delay: 7500, action: async () => {
           try {
-            const res = await fetch(`/api/cases/${params.id}/verify`, { method: 'POST' });
+            const res = await fetch(`/api/cases/${id}/verify`, { method: 'POST' });
             if (!res.ok) throw new Error('API failed');
           } catch (err) {
-            console.warn('API error, falling back to local verification execution:', err);
-            const verified = runDemoVerification(currentCase);
-            saveCase(verified);
+            console.warn('API error during verification:', err);
           }
-          router.push(`/verification/${params.id}/result`);
+          router.push(`/verification/${id}/result`);
       }}
     ];
 
     const timeouts = steps.map(s => setTimeout(s.action, s.delay));
     return () => timeouts.forEach(clearTimeout);
-  }, [params.id, router]);
+  }, [currentCase, id, router]);
 
   const stepsData = [
     { icon: Database, label: 'Reading uploaded documents and metadata', desc: 'Validating formats and extracting preliminary information.' },

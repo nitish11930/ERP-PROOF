@@ -2,11 +2,17 @@ import type { CaseStatus, RiskLevel } from '@/lib/types';
 
 // ── Status Badge ──────────────────────────────
 const STATUS_LABELS: Record<CaseStatus, string> = {
+  draft: 'Draft',
+  evidence_uploaded: 'Evidence Uploaded',
+  processing: 'Processing',
+  needs_more_evidence: 'Needs More Evidence',
+  ready_for_review: 'Ready for Review',
   pending:   'Pending',
   in_review: 'In Review',
   approved:  'Approved',
   rejected:  'Rejected',
   escalated: 'Escalated',
+  review_completed: 'Review Completed',
 };
 
 export function StatusBadge({ status }: { status: CaseStatus }) {

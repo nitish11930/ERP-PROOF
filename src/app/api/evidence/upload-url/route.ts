@@ -1,15 +1,31 @@
 import { NextResponse } from 'next/server';
 import { EvidenceStorage } from '@/lib/aws/s3/storage';
+import { getSession } from '@/lib/auth';
 
 export async function POST(request: Request) {
   try {
-    const { caseId, fileName, contentType } = await request.json();
+    const session = await getSession();
+    if (!session || !session.producerId) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { caseId, fileName, contentType, fileSize } = await request.json();
 
     if (!caseId || !fileName || !contentType) {
       return NextResponse.json(
         { error: 'Missing required fields: caseId, fileName, contentType' },
         { status: 400 }
       );
+    }
+    
+    if (fileSize && fileSize > 10 * 1024 * 1024) {
+      return NextResponse.json({ error: 'File size exceeds 10MB limit' }, { status: 400 });
+    }
+
+    // Validate file type
+    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+    if (!allowedTypes.includes(contentType)) {
+      return NextResponse.json({ error: 'Invalid file type' }, { status: 400 });
     }
 
     const key = EvidenceStorage.generateObjectKey(caseId, fileName);

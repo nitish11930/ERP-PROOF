@@ -1,19 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Upload, Search, FileText, Filter, CheckCircle, AlertTriangle, Zap } from 'lucide-react';
 import { TopBar } from '@/components/layout/TopBar';
 import { EvidenceTypeBadge } from '@/components/ui/Badge';
-import { DEMO_CASES } from '@/lib/data/demo';
-import type { Evidence } from '@/lib/types';
+import type { Evidence, Case } from '@/lib/types';
 
 export default function EvidencePage() {
   const [typeFilter, setTypeFilter] = useState<string>('all');
   const [search, setSearch] = useState('');
-  const [selected, setSelected] = useState<Evidence | null>(null);
+  const [selected, setSelected] = useState<Evidence & { producerName?: string } | null>(null);
+  const [cases, setCases] = useState<Case[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/cases')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setCases(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   // Flatten all evidence from loaded cases
-  const allEvidence = DEMO_CASES.flatMap((c) =>
+  const allEvidence = cases.flatMap((c) =>
     c.evidence.map((ev) => ({ ...ev, producerName: c.producer.name, caseId: c.caseId }))
   );
 
@@ -28,7 +39,7 @@ export default function EvidencePage() {
     <>
       <TopBar
         title="Evidence Explorer"
-        subtitle={`${allEvidence.length} documents across ${DEMO_CASES.filter(c => c.evidence.length > 0).length} cases`}
+        subtitle={`${allEvidence.length} documents across ${cases.filter(c => c.evidence.length > 0).length} cases`}
       />
 
       <main className="page-content" id="evidence-main">

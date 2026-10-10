@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { useRouter } from 'next/navigation';
-import { getCase } from '@/lib/services/store';
 import { FactNormalizer } from '@/lib/services/factNormalizer';
 import { TopBar } from '@/components/layout/TopBar';
 import { RiskBadge } from '@/components/ui/Badge';
@@ -11,15 +10,26 @@ import { ShieldAlert, CheckCircle, ArrowRight, FileText, Activity, AlertTriangle
 import Link from 'next/link';
 import type { Case } from '@/lib/types';
 
-export default function VerificationResultPage({ params }: { params: { id: string } }) {
+export default function VerificationResultPage({ params }: { params: Promise<{ id: string }> }) {
   const router = useRouter();
-  const c = getCase(params.id);
+  const { id } = use(params);
+  const [c, setC] = useState<Case | null>(null);
   
   useEffect(() => {
-    if (!c) router.push('/cases');
-  }, [c, router]);
+    fetch(`/api/cases/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data || data.error) router.push('/cases');
+        else setC(data);
+      });
+  }, [id, router]);
 
-  if (!c) return null;
+  if (!c) return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column', gap: 16 }}>
+      <div className="spinner" style={{ width: 24, height: 24, border: '3px solid var(--color-gray-200)', borderTopColor: 'var(--color-blue-600)', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+      <div style={{ color: 'var(--color-gray-500)', fontSize: '14px' }}>Loading case results...</div>
+    </div>
+  );
 
   // Extract totals for visual
   const claim = c.claimedQuantityKg;

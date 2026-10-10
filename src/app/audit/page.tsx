@@ -1,16 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Clock, Filter, Search, Download } from 'lucide-react';
 import { TopBar } from '@/components/layout/TopBar';
-import { DEMO_CASES } from '@/lib/data/demo';
-import type { AuditEntry } from '@/lib/types';
+import type { AuditEntry, Case } from '@/lib/types';
 
 export default function AuditPage() {
   const [roleFilter, setRoleFilter] = useState('all');
   const [search, setSearch] = useState('');
+  const [cases, setCases] = useState<Case[]>([]);
 
-  const allEntries: (AuditEntry & { caseId: string })[] = DEMO_CASES.flatMap((c) =>
+  useEffect(() => {
+    fetch('/api/cases')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setCases(data);
+      })
+      .catch(console.error);
+  }, []);
+
+  const allEntries: (AuditEntry & { caseId: string })[] = cases.flatMap((c) =>
     c.auditLog.map((entry) => ({ ...entry, caseId: c.caseId }))
   ).sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 

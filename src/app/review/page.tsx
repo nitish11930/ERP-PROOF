@@ -1,21 +1,46 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { CheckCircle, XCircle, MessageSquare, AlertTriangle, User, Clock } from 'lucide-react';
+import { CheckCircle, XCircle, MessageSquare, AlertTriangle, User, Clock, Loader2 } from 'lucide-react';
 import { TopBar } from '@/components/layout/TopBar';
 import { StatusBadge, RiskBadge } from '@/components/ui/Badge';
-import { DEMO_CASES } from '@/lib/data/demo';
 import { getRiskColor } from '@/lib/risk/calculator';
+import type { Case } from '@/lib/types';
 
 export default function ReviewQueuePage() {
   const [comment, setComment] = useState<Record<string, string>>({});
   const [decided, setDecided] = useState<Record<string, string>>({});
+  const [cases, setCases] = useState<Case[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const reviewable = DEMO_CASES.filter((c) => c.status === 'pending' || c.status === 'in_review' || c.status === 'escalated');
+  useEffect(() => {
+    fetch('/api/cases')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setCases(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
-  const decide = (caseId: string, decision: string) => {
-    setDecided((prev) => ({ ...prev, [caseId]: decision }));
+  const reviewable = cases.filter((c) => c.status === 'pending' || c.status === 'in_review' || c.status === 'escalated');
+
+  const decide = async (caseId: string, decision: string) => {
+    try {
+      const res = await fetch(`/api/cases/${caseId}/review`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ decision, comments: comment[caseId] })
+      });
+      if (res.ok) {
+        setDecided((prev) => ({ ...prev, [caseId]: decision }));
+      } else {
+        alert('Failed to submit decision (unauthorized?)');
+      }
+    } catch (e) {
+      alert('Network error submitting decision');
+    }
   };
 
   return (

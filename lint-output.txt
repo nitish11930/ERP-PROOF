@@ -1,0 +1,100 @@
+
+> epr-proof@0.1.0 lint
+> eslint
+
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/api/auth/login/route.ts
+  32:12  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/api/cases/[id]/evidence/[evidenceId]/extract/route.ts
+  4:34  warning  'Case' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/api/cases/[id]/review/route.ts
+  51:36  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/audit/page.tsx
+  4:17  warning  'Filter' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/cases/[id]/page.tsx
+    6:32  warning  'Clock' is defined but never used  @typescript-eslint/no-unused-vars
+  101:14  warning  'e' is defined but never used      @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/cases/page.tsx
+    5:18  warning  'Filter' is defined but never used                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+    5:41  warning  'ChevronRight' is defined but never used                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+    9:33  warning  'RiskLevel' is defined but never used                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+   17:10  warning  'loading' is assigned a value but never used                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+  169:51  warning  Do not use `window.location.href` to navigate to internal Next.js pages. Use `redirect()` in the render phase, or `useRouter().push()` in Client Components' event handlers instead. See: https://nextjs.org/docs/messages/no-location-assign-relative-destination  @next/next/no-location-assign-relative-destination
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/evidence/page.tsx
+  4:36  warning  'Filter' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/login/page.tsx
+  27:14  warning  'err' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/page.tsx
+    5:20  warning  'BarChart' is defined but never used                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+    5:30  warning  'Bar' is defined but never used                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+   10:38  warning  'FileText' is defined but never used                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+   77:9   warning  'RISK_COLORS' is assigned a value but never used                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+  311:36  warning  Do not use `window.location.href` to navigate to internal Next.js pages. Use `redirect()` in the render phase, or `useRouter().push()` in Client Components' event handlers instead. See: https://nextjs.org/docs/messages/no-location-assign-relative-destination  @next/next/no-location-assign-relative-destination
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/reports/page.tsx
+  4:51  warning  'Filter' is defined but never used        @typescript-eslint/no-unused-vars
+  8:10  warning  'getRiskColor' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/review/page.tsx
+   5:62  warning  'User' is defined but never used              @typescript-eslint/no-unused-vars
+   5:68  warning  'Clock' is defined but never used             @typescript-eslint/no-unused-vars
+   5:75  warning  'Loader2' is defined but never used           @typescript-eslint/no-unused-vars
+  15:10  warning  'loading' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  41:14  warning  'e' is defined but never used                 @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/verification/[id]/page.tsx
+   9:15  warning  'Case' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+  55:6   warning  React Hook useEffect has a missing dependency: 'currentCase'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/verification/[id]/result/page.tsx
+   3:21  warning  'useState' is defined but never used  @typescript-eslint/no-unused-vars
+  10:83  warning  'Play' is defined but never used      @typescript-eslint/no-unused-vars
+  12:15  warning  'Case' is defined but never used      @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/app/verify/page.tsx
+  5:31  warning  'CheckCircle' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/components/layout/Sidebar.tsx
+   7:21  warning  'ChevronRight' is defined but never used  @typescript-eslint/no-unused-vars
+   8:11  warning  'Bell' is defined but never used          @typescript-eslint/no-unused-vars
+  11:11  warning  'NavItem' is defined but never used       @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/lib/api/client.ts
+  20:17  warning  'id' is defined but never used        @typescript-eslint/no-unused-vars
+  25:20  warning  'caseData' is defined but never used  @typescript-eslint/no-unused-vars
+  30:20  warning  'id' is defined but never used        @typescript-eslint/no-unused-vars
+  35:26  warning  'id' is defined but never used        @typescript-eslint/no-unused-vars
+  35:38  warning  'review' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/lib/auth.ts
+  33:12  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/lib/aws/dynamodb/repository.ts
+    6:3   warning  'GetItemCommand' is defined but never used     @typescript-eslint/no-unused-vars
+   78:13  warning  'evidence' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  203:13  warning  'evidence' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  203:23  warning  'findings' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  203:33  warning  'auditLog' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  203:51  warning  'cid' is assigned a value but never used       @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/lib/risk/calculator.ts
+  5:15  warning  'Case' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/lib/services/factNormalizer.ts
+  1:25  warning  'ExtractedDocument' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/felipassolutions/Desktop/ERP PROOF/src/lib/services/verificationService.ts
+   3:30  warning  'Contradiction' is defined but never used         @typescript-eslint/no-unused-vars
+   3:45  warning  'RiskLevel' is defined but never used             @typescript-eslint/no-unused-vars
+  18:9   warning  'transportKg' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 51 problems (1 error, 50 warnings)
+

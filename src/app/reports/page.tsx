@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
+import { useState, useEffect } from 'react';
 import { Download, FileText, BarChart2, Calendar, Filter } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { TopBar } from '@/components/layout/TopBar';
-import { DEMO_MONTHLY_TRENDS, DEMO_CASES } from '@/lib/data/demo';
-import { getRiskColor } from '@/lib/risk/calculator';
+import type { Case, MonthlyTrend } from '@/lib/types';
 
 const REPORT_TEMPLATES = [
   {
@@ -62,8 +62,19 @@ function CustomTooltip({ active, payload, label }: any) {
 }
 
 export default function ReportsPage() {
+  const [cases, setCases] = useState<Case[]>([]);
+
+  useEffect(() => {
+    fetch('/api/cases')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setCases(data);
+      })
+      .catch(console.error);
+  }, []);
+
   const materialData = Object.entries(
-    DEMO_CASES.reduce<Record<string, { claimed: number; cases: number }>>((acc, c) => {
+    cases.reduce<Record<string, { claimed: number; cases: number }>>((acc, c) => {
       const cat = c.producer.category;
       if (!acc[cat]) acc[cat] = { claimed: 0, cases: 0 };
       acc[cat].claimed += c.claimedQuantityKg;
@@ -71,6 +82,20 @@ export default function ReportsPage() {
       return acc;
     }, {})
   ).map(([name, data]) => ({ name, ...data }));
+
+  // Dynamically calculate monthly trends from cases
+  const trendsMap: Record<string, MonthlyTrend> = {};
+  cases.forEach(c => {
+    const d = new Date(c.submittedAt);
+    const month = d.toLocaleString('default', { month: 'short' });
+    if (!trendsMap[month]) {
+      trendsMap[month] = { month, submitted: 0, approved: 0, rejected: 0 };
+    }
+    trendsMap[month].submitted++;
+    if (c.status === 'approved') trendsMap[month].approved++;
+    if (c.status === 'rejected') trendsMap[month].rejected++;
+  });
+  const monthlyTrends = Object.values(trendsMap);
 
   return (
     <>
@@ -118,7 +143,7 @@ export default function ReportsPage() {
               </div>
             </div>
             <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={DEMO_MONTHLY_TRENDS} margin={{ top: 4, right: 4, bottom: 0, left: -20 }} barSize={10} barGap={3}>
+              <BarChart data={monthlyTrends} margin={{ top: 4, right: 4, bottom: 0, left: -20 }} barSize={10} barGap={3}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-gray-100)" vertical={false} />
                 <XAxis dataKey="month" tick={{ fontSize: 11, fill: 'var(--color-gray-400)' }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fontSize: 11, fill: 'var(--color-gray-400)' }} axisLine={false} tickLine={false} />
