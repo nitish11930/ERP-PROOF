@@ -47,3 +47,4 @@ _cacache/
 _logs/
 _npx/
 _update-notifier-last-checked
+.env*

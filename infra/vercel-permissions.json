@@ -1,0 +1,35 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::epr-proof-evidence-510935912210"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::epr-proof-evidence-510935912210/cases/*",
+        "arn:aws:s3:::epr-proof-evidence-510935912210/submission-demo/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+      ],
+      "Resource": "arn:aws:dynamodb:ap-south-1:510935912210:table/EPRProof"
+    }
+  ]
+}

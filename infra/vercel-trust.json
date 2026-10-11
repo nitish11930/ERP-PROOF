@@ -1,0 +1,18 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::510935912210:oidc-provider/oidc.vercel.com/nitishkumar11930-7654s-projects"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "oidc.vercel.com/nitishkumar11930-7654s-projects:aud": "https://vercel.com/nitishkumar11930-7654s-projects",
+          "oidc.vercel.com/nitishkumar11930-7654s-projects:sub": "owner:nitishkumar11930-7654s-projects:project:erp-proof:environment:production"
+        }
+      }
+    }
+  ]
+}
