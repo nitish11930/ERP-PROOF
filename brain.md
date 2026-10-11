@@ -167,7 +167,7 @@ Latest explicit developer instruction = highest-priority product instruction.
 - 2026-10-07: Phase 4 AWS E2E Validation. Attempted real AWS E2E activation, but failed immediately due to missing AWS credentials.
 - 2026-10-09: Phase 4B AWS E2E Activation. AWS CLI credentials confirmed working. Created real S3 bucket and DynamoDB table. Ran full E2E validation (15 PASS, 0 FAIL). Bedrock blocked — requires model access enablement.
 - 2026-10-10: Phase 5 Organization Submission & Verification. Extended data model in `types.ts`, updated `/verify` UI to include full claim details, updated Bedrock extraction prompt to support extensive fields, updated `factNormalizer.ts`, and updated `/cases` page UI to support new case statuses (`processing`, `draft`, etc.). Build and lint pass successfully.
-- 2026-10-10: Phase 2A Security & Review Persistence. Implemented lightweight secure authentication via Node.js crypto HMAC cookies. Secured API routes (`GET/POST /api/cases`, `GET/PATCH /api/cases/[id]`) with role-based access control and case-level ownership isolation. Created `POST /api/cases/[id]/review` for persistent human review decisions with audit logging. Updated UI on `/cases` and `/review` and `/cases/[id]` to fetch real data from the backend and support active decision submissions. 
+- 2026-10-10: Phase 2A Security & Review Persistence. Implemented lightweight secure authentication via Node.js crypto HMAC cookies. Secured API routes (`GET/POST /api/cases`, `GET/PATCH /api/cases/[id]`) with role-based access control and case-level ownership isolation. Created `POST /api/cases/[id]/review` for persistent human review decisions with audit logging. Updated UI on `/cases` and `/review` and `/cases/[id]` to fetch real data from the backend and support active decision submissions.
 
 ## PHASE 2A FINAL REPORT
 
@@ -375,3 +375,24 @@ Configured via Environment Variables.
 - `VERCEL=1 npm run build`: PASS (Normal build mode verified).
 - Local Docker CLI: Not installed on host environment (`command not found: docker`). Container build to be performed in CI/CD pipeline or build machine with Docker.
 
+## AWS S3 & DYNAMODB INTEGRATION HARDENING (PHASE 2)
+
+### A. Fixes Implemented
+1. `src/lib/aws/s3/client.ts`: Added dynamic `getS3BucketName()` reading `AWS_S3_BUCKET` (default: `epr-proof-evidence-510935912210`).
+2. `src/lib/aws/dynamodb/client.ts`: Added dynamic `getDynamoTableName()` reading `AWS_DYNAMODB_TABLE` (default: `EPRProof`).
+3. `src/lib/aws/s3/storage.ts`: Wired `EvidenceStorage` to use `getS3BucketName()` dynamically.
+4. `src/app/api/cases/[id]/evidence/[evidenceId]/confirm/route.ts`:
+   - Eliminated inconsistent `epr-proof-evidence-local` fallback; now uses `getS3BucketName()`.
+   - Reused singleton `s3Client` with consistent `AWS_REGION`.
+   - Removed silent fake mock hash fallback; returns actionable 502 error if S3 object retrieval fails.
+5. `src/app/api/evidence/upload-url/route.ts`:
+   - In production, returns actionable 502 error if presigned URL generation fails instead of returning a fake mock URL.
+   - Preserves offline mock with clear warning only for local development.
+6. `src/lib/aws/dynamodb/repository.ts`:
+   - Wired all DynamoDB operations to dynamically invoke `getDynamoTableName()`.
+7. `src/lib/aws/__tests__/awsConfig.test.ts`:
+   - Added unit test suite covering S3/DynamoDB resource resolution and S3 key sanitization.
+
+### B. Verification Results
+- `npm run test`: 21 PASS, 0 FAIL across 5 test suites.
+- `npm run build`: PASS (Exit code 0).

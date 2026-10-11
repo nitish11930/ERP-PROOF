@@ -1,14 +1,12 @@
 import { DocumentAnalysisProvider } from '../provider';
 import { bedrockClient, getBedrockModelId } from '@/lib/aws/bedrock/client';
 import { InvokeModelCommand } from '@aws-sdk/client-bedrock-runtime';
-import { s3Client } from '@/lib/aws/s3/client';
+import { s3Client, getS3BucketName } from '@/lib/aws/s3/client';
 import { GetObjectCommand } from '@aws-sdk/client-s3';
 import { EXTRACTION_PROMPT } from '@/lib/ai/prompts/epr-extraction';
 import { DocumentPreprocessor } from '../preprocessing/documentPreprocessor';
 import { ExtractedDocumentSchema } from '../schema';
 import type { Evidence, ExtractedDocument } from '@/lib/types';
-
-const BUCKET = process.env.AWS_S3_BUCKET || 'epr-proof-evidence-510935912210';
 
 export class BedrockAnalysisProvider implements DocumentAnalysisProvider {
   async getProviderStatus(): Promise<{ isAvailable: boolean; modelId?: string; error?: string }> {
@@ -30,7 +28,7 @@ export class BedrockAnalysisProvider implements DocumentAnalysisProvider {
     try {
       // 1. Fetch document from S3
       const getObjCmd = new GetObjectCommand({
-        Bucket: BUCKET,
+        Bucket: getS3BucketName(),
         Key: evidence.s3Key,
       });
       const s3Response = await s3Client.send(getObjCmd);

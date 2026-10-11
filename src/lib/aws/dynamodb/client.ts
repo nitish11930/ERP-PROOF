@@ -9,3 +9,6 @@ export const dynamoClient = new DynamoDBClient({
   // AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
   // or via IAM Roles in production
 });
+
+export const getDynamoTableName = (): string =>
+  process.env.AWS_DYNAMODB_TABLE || 'EPRProof';

@@ -1,0 +1,9 @@
+EPR PROOF — SYNTHETIC SUBMISSION EVIDENCE
+Document type: Collection Record
+Recycler: ABC Recycling Pvt. Ltd.
+Material: E-Waste
+Collected quantity: 1850 kg
+Claimed recycled quantity: 2400 kg
+Collection date: 2026-10-07
+Purpose: Demonstrate real Amazon S3 upload and signed document retrieval.
+This is synthetic demonstration data.

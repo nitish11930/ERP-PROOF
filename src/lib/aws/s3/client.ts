@@ -9,3 +9,6 @@ export const s3Client = new S3Client({
   // AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
   // or via IAM Roles in production
 });
+
+export const getS3BucketName = (): string =>
+  process.env.AWS_S3_BUCKET || 'epr-proof-evidence-510935912210';

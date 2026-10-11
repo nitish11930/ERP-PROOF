@@ -4,15 +4,14 @@ import {
   DeleteObjectCommand 
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import { s3Client } from './client';
-
-const BUCKET = process.env.AWS_S3_BUCKET || 'epr-proof-evidence-510935912210';
+import { s3Client, getS3BucketName } from './client';
 
 /**
  * Foundation for Evidence Storage via S3.
- * NOT FULLY INTEGRATED IN PHASE 3A.
  */
 export const EvidenceStorage = {
+  getBucketName: getS3BucketName,
+
   /**
    * Generates a deterministic S3 key for a case document
    */
@@ -27,7 +26,7 @@ export const EvidenceStorage = {
    */
   getUploadUrl: async (key: string, contentType: string): Promise<string> => {
     const command = new PutObjectCommand({
-      Bucket: BUCKET,
+      Bucket: getS3BucketName(),
       Key: key,
       ContentType: contentType,
     });
@@ -40,7 +39,7 @@ export const EvidenceStorage = {
    */
   getDownloadUrl: async (key: string): Promise<string> => {
     const command = new GetObjectCommand({
-      Bucket: BUCKET,
+      Bucket: getS3BucketName(),
       Key: key,
     });
     // URL expires in 1 hour
@@ -52,7 +51,7 @@ export const EvidenceStorage = {
    */
   deleteEvidence: async (key: string): Promise<void> => {
     const command = new DeleteObjectCommand({
-      Bucket: BUCKET,
+      Bucket: getS3BucketName(),
       Key: key,
     });
     await s3Client.send(command);

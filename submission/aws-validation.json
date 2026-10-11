@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-11T14:08:52.266Z",
+  "service": "Amazon S3",
+  "checks": {
+    "connection": "PASS",
+    "upload": "PASS",
+    "signedDownload": "PASS"
+  },
+  "bucket": "epr-proof-evidence-510935912210",
+  "region": "ap-south-1",
+  "objectKey": "submission-demo/reviewer/69a413ce-8ec9-4e7c-a332-f9f13f756e77-sample-evidence.txt",
+  "sha256": "bf69e5a5e9136c0b514486c31a78f00783ef73edcd69167996d6f65b538fca03",
+  "success": true
+}

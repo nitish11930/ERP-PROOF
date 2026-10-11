@@ -6,16 +6,15 @@ import {
   GetItemCommand
 } from '@aws-sdk/client-dynamodb';
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
-import { dynamoClient } from './client';
+import { dynamoClient, getDynamoTableName } from './client';
 import { SchemaKeys } from './schema';
 import type { Case, Evidence, Finding, AuditEntry } from '@/lib/types';
-
-const TABLE_NAME = process.env.AWS_DYNAMODB_TABLE || 'EPRProof';
 
 /**
  * DynamoDB Repository for Case Persistence
  */
 export const CaseRepository = {
+  getTableName: getDynamoTableName,
   
   /**
    * Creates a full case with its nested entities in DynamoDB
@@ -25,7 +24,7 @@ export const CaseRepository = {
     const { evidence, findings, auditLog, ...caseMeta } = caseData;
     
     await dynamoClient.send(new PutItemCommand({
-      TableName: TABLE_NAME,
+      TableName: getDynamoTableName(),
       Item: marshall({
         ...SchemaKeys.case(caseData.caseId),
         Type: 'Case',
@@ -36,7 +35,7 @@ export const CaseRepository = {
     // 2. Save Evidence items
     for (const ev of evidence) {
       await dynamoClient.send(new PutItemCommand({
-        TableName: TABLE_NAME,
+        TableName: getDynamoTableName(),
         Item: marshall({
           ...SchemaKeys.evidence(caseData.caseId, ev.evidenceId),
           Type: 'Evidence',
@@ -48,7 +47,7 @@ export const CaseRepository = {
     // 3. Save Findings items
     for (const finding of findings) {
       await dynamoClient.send(new PutItemCommand({
-        TableName: TABLE_NAME,
+        TableName: getDynamoTableName(),
         Item: marshall({
           ...SchemaKeys.finding(caseData.caseId, finding.findingId),
           Type: 'Finding',
@@ -60,7 +59,7 @@ export const CaseRepository = {
     // 4. Save Audit Logs
     for (const audit of auditLog) {
       await dynamoClient.send(new PutItemCommand({
-        TableName: TABLE_NAME,
+        TableName: getDynamoTableName(),
         Item: marshall({
           ...SchemaKeys.audit(caseData.caseId, audit.entryId),
           Type: 'Audit',
@@ -79,7 +78,7 @@ export const CaseRepository = {
     
     // 1. Update the Case status and risk
     await dynamoClient.send(new PutItemCommand({
-      TableName: TABLE_NAME,
+      TableName: getDynamoTableName(),
       Item: marshall({
         ...SchemaKeys.case(verifiedCase.caseId),
         Type: 'Case',
@@ -90,7 +89,7 @@ export const CaseRepository = {
     // 2. Put only the NEW findings (or overwrite findings with same IDs safely)
     for (const finding of findings) {
       await dynamoClient.send(new PutItemCommand({
-        TableName: TABLE_NAME,
+        TableName: getDynamoTableName(),
         Item: marshall({
           ...SchemaKeys.finding(verifiedCase.caseId, finding.findingId),
           Type: 'Finding',
@@ -102,7 +101,7 @@ export const CaseRepository = {
     // 3. Put Audit Logs
     for (const audit of auditLog) {
       await dynamoClient.send(new PutItemCommand({
-        TableName: TABLE_NAME,
+        TableName: getDynamoTableName(),
         Item: marshall({
           ...SchemaKeys.audit(verifiedCase.caseId, audit.entryId),
           Type: 'Audit',
@@ -117,7 +116,7 @@ export const CaseRepository = {
    */
   saveExtractionResult: async (caseId: string, evidence: Evidence): Promise<void> => {
     await dynamoClient.send(new PutItemCommand({
-      TableName: TABLE_NAME,
+      TableName: getDynamoTableName(),
       Item: marshall({
         ...SchemaKeys.evidence(caseId, evidence.evidenceId),
         Type: 'Evidence',
@@ -131,7 +130,7 @@ export const CaseRepository = {
    */
   getCase: async (caseId: string): Promise<Case | null> => {
     const { Items } = await dynamoClient.send(new QueryCommand({
-      TableName: TABLE_NAME,
+      TableName: getDynamoTableName(),
       KeyConditionExpression: 'PK = :pk',
       ExpressionAttributeValues: marshall({ ':pk': `CASE#${caseId}` })
     }));
@@ -175,7 +174,7 @@ export const CaseRepository = {
     }
 
     const { Items } = await dynamoClient.send(new ScanCommand({
-      TableName: TABLE_NAME,
+      TableName: getDynamoTableName(),
       FilterExpression: filterExpression,
       ExpressionAttributeNames: expressionAttributeNames,
       ExpressionAttributeValues: marshall(expressionAttributeValues)
@@ -218,7 +217,7 @@ export const CaseRepository = {
     if (updateExpressions.length === 0) return;
 
     await dynamoClient.send(new UpdateItemCommand({
-      TableName: TABLE_NAME,
+      TableName: getDynamoTableName(),
       Key: marshall(SchemaKeys.case(caseId)),
       UpdateExpression: `SET ${updateExpressions.join(', ')}`,
       ExpressionAttributeNames: expressionAttributeNames,
@@ -231,7 +230,7 @@ export const CaseRepository = {
    */
   addAuditLog: async (caseId: string, audit: AuditEntry): Promise<void> => {
     await dynamoClient.send(new PutItemCommand({
-      TableName: TABLE_NAME,
+      TableName: getDynamoTableName(),
       Item: marshall({
         ...SchemaKeys.audit(caseId, audit.entryId),
         Type: 'Audit',

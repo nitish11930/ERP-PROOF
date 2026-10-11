@@ -17,7 +17,7 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    
+
     if (fileSize && fileSize > 10 * 1024 * 1024) {
       return NextResponse.json({ error: 'File size exceeds 10MB limit' }, { status: 400 });
     }
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     }
 
     const key = EvidenceStorage.generateObjectKey(caseId, fileName);
-    
+
     // Fallback safely for local dev if AWS credentials are not fully set up
     try {
       const uploadUrl = await EvidenceStorage.getUploadUrl(key, contentType);
@@ -42,18 +42,28 @@ export async function POST(request: Request) {
       }));
       return NextResponse.json({ uploadUrl, key });
     } catch (awsError: unknown) {
+      const errorMessage = (awsError as Error).message;
       console.error(JSON.stringify({
         event: 'EVIDENCE_UPLOAD_URL_FAILED',
         caseId,
-        error: (awsError as Error).message,
+        error: errorMessage,
         timestamp: new Date().toISOString()
       }));
-      
-      // If the SDK throws due to missing credentials, we simulate success for local demo
-      return NextResponse.json({ 
+
+      // In production, do not return mock URLs that cannot receive uploads
+      if (process.env.NODE_ENV === 'production') {
+        return NextResponse.json({
+          error: 'Failed to generate S3 upload URL. AWS S3 configuration or credentials unavailable.',
+          details: errorMessage
+        }, { status: 502 });
+      }
+
+      // If the SDK throws due to missing credentials, return mock for local offline demo
+      return NextResponse.json({
         uploadUrl: `mock-upload-url-for-${key}`,
         key,
-        mock: true 
+        mock: true,
+        warning: 'Local offline demo: S3 credentials unavailable.'
       });
     }
   } catch (error) {
