@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const authCookie = request.cookies.get('demo_auth');
+  const authCookie = request.cookies.get('auth_token');
   const isLoginPage = request.nextUrl.pathname === '/login';
 
   // Allow access to public assets

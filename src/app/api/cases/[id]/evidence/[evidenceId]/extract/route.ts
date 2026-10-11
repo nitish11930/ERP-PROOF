@@ -2,13 +2,14 @@ import { NextResponse } from 'next/server';
 import { CaseRepository } from '@/lib/aws/dynamodb/repository';
 import { getDocumentAnalysisProvider } from '@/lib/ai';
 import { getSession } from '@/lib/auth';
-import type { ExtractedDocument, Case } from '@/lib/types';
+import type { Evidence, ExtractedDocument } from '@/lib/types';
 
 export async function POST(
   request: Request,
   context: { params: Promise<{ id: string; evidenceId: string }> }
 ) {
   const { id: caseId, evidenceId } = await context.params;
+  let evidenceToPersist: Evidence | undefined;
 
   try {
     const session = await getSession();
@@ -31,6 +32,7 @@ export async function POST(
     if (!evidence) {
       return NextResponse.json({ error: 'Evidence not found' }, { status: 404 });
     }
+    evidenceToPersist = evidence;
 
     console.log(JSON.stringify({
       event: 'EXTRACTION_STARTED',
@@ -117,8 +119,13 @@ export async function POST(
     
     // We try to persist the failure. If this fails, we can't do much.
     try {
-      evidence.extractedData = { ...evidence.extractedData, bedrockExtraction: errorResult };
-      await CaseRepository.saveExtractionResult(caseId, evidence);
+      if (evidenceToPersist) {
+        evidenceToPersist.extractedData = {
+          ...evidenceToPersist.extractedData,
+          bedrockExtraction: errorResult
+        };
+        await CaseRepository.saveExtractionResult(caseId, evidenceToPersist);
+      }
     } catch (dbError) {
       console.error('Failed to persist extraction error state:', dbError);
     }

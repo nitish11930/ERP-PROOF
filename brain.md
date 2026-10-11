@@ -349,3 +349,29 @@ Configured via Environment Variables.
 3. Create a new adapter file (e.g. `src/lib/ai/providers/external.ts`) implementing `DocumentAnalysisProvider`.
 4. Register the new provider class in the `src/lib/ai/index.ts` provider factory.
 5. Within the new provider, map its response strictly through `ExtractedDocumentSchema.safeParse(response)` before returning it to the orchestrator.
+
+## AWS APP RUNNER DEPLOYMENT PREPARATION (PHASE 1)
+
+### A. Objective & Dual-Hosting Strategy
+- Prepare containerized AWS deployment on AWS App Runner without breaking the existing Vercel deployment.
+- Next.js version 16.3.8 and React 19.2.8 are preserved.
+
+### B. Configuration & Files Prepared
+1. `next.config.ts`: Configured conditional standalone output:
+   `output: process.env.VERCEL ? undefined : 'standalone'`
+   Ensures normal Vercel serverless behavior when deployed to Vercel, and standalone output for container builds.
+2. `Dockerfile`: Multi-stage production container image:
+   - Base: `node:20-alpine` (Node 20 runtime matching dependencies).
+   - `npm ci` for deterministic dependency resolution.
+   - Next.js standalone execution via `node server.js`.
+   - Host binding: `HOSTNAME="0.0.0.0"`, `PORT=3000`.
+   - Security: Non-root execution (`USER nextjs`, UID/GID 1001).
+   - Excludes secrets, `.env.local`, and development artifacts.
+3. `.dockerignore`: Excludes `node_modules`, `.next`, `.git`, `.env*.local`, credentials, and documentation.
+
+### C. Verification Results
+- `npm run test` (Vitest): 16 PASS, 0 FAIL.
+- `npm run build`: PASS (Standalone bundle generated in `.next/standalone`).
+- `VERCEL=1 npm run build`: PASS (Normal build mode verified).
+- Local Docker CLI: Not installed on host environment (`command not found: docker`). Container build to be performed in CI/CD pipeline or build machine with Docker.
+

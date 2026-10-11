@@ -60,8 +60,9 @@ describe('AI Extraction Schema Validation', () => {
     const result = ExtractedDocumentSchema.safeParse(validWithSource);
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.facts.registrationNumber?.source?.page).toBe(2);
-      expect(result.data.facts.registrationNumber?.source?.inferred).toBe(false);
+      const registrationNumber = result.data.facts?.registrationNumber;
+      expect(registrationNumber?.source?.page).toBe(2);
+      expect(registrationNumber?.source?.inferred).toBe(false);
     }
   });
 

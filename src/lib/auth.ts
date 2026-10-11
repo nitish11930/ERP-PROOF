@@ -1,7 +1,14 @@
 import crypto from 'crypto';
 import { cookies } from 'next/headers';
 
-const SECRET = process.env.API_SECRET || 'hackathon-fallback-secret-123';
+const SECRET = process.env.API_SECRET || (process.env.NODE_ENV === 'production' ? '' : 'local-development-only-secret');
+
+function getSecret(): string {
+  if (!SECRET) {
+    throw new Error('API_SECRET must be configured in production.');
+  }
+  return SECRET;
+}
 
 export interface AuthSession {
   role: 'reviewer' | 'producer';
@@ -11,7 +18,7 @@ export interface AuthSession {
 
 export function signToken(payload: AuthSession): string {
   const data = Buffer.from(JSON.stringify(payload)).toString('base64');
-  const hmac = crypto.createHmac('sha256', SECRET);
+  const hmac = crypto.createHmac('sha256', getSecret());
   hmac.update(data);
   const signature = hmac.digest('base64');
   return `${data}.${signature}`;
@@ -21,7 +28,7 @@ export function verifyToken(token: string): AuthSession | null {
   try {
     if (!token) return null;
     const [data, signature] = token.split('.');
-    const hmac = crypto.createHmac('sha256', SECRET);
+    const hmac = crypto.createHmac('sha256', getSecret());
     hmac.update(data);
     const expectedSignature = hmac.digest('base64');
     
