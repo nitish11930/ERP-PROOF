@@ -1,17 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { ShieldCheck, Lock, Mail, ArrowRight, AlertTriangle } from 'lucide-react';
+import { ShieldCheck, Lock, Mail, ArrowRight, AlertTriangle, Loader2 } from 'lucide-react';
 
 export default function LoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState('demo@eprproof.ai');
   const [password, setPassword] = useState('EPRProof@2026');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
     try {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
@@ -19,14 +20,18 @@ export default function LoginPage() {
         body: JSON.stringify({ email, password })
       });
       if (res.ok) {
-        router.push('/');
+        // Hard redirect so the browser sends the new auth_token cookie
+        // with the next request — middleware then lets the user through.
+        window.location.href = '/';
+        return;
       } else {
         const data = await res.json();
         setError(data.error || 'Invalid credentials.');
       }
-    } catch (err) {
+    } catch {
       setError('An error occurred during login.');
     }
+    setLoading(false);
   };
 
   return (
@@ -88,8 +93,8 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '12px', justifyContent: 'center', marginTop: 8 }}>
-            Access Demo Platform <ArrowRight size={16} />
+          <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', padding: '12px', justifyContent: 'center', marginTop: 8, opacity: loading ? 0.75 : 1 }}>
+            {loading ? <><Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} /> Signing in…</> : <>Access Demo Platform <ArrowRight size={16} /></>}
           </button>
         </form>
 
